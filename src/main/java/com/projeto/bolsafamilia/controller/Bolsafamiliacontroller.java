@@ -2,17 +2,16 @@
 // e a camada de acesso a dados fica na camada de repositório
 package com.projeto.bolsafamilia.controller;
 
-
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
+//import java.util.ArrayList;
+//import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
-import org.springframework.data.jpa.domain.Specification;
+//import org.springframework.data.domain.PageRequest;
+//import org.springframework.data.domain.Pageable;
+//import org.springframework.data.domain.Sort;
+//import org.springframework.data.jpa.domain.Specification;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,10 +19,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.projeto.bolsafamilia.model.Bolsafamiliamodel;
-import com.projeto.bolsafamilia.repository.BolsafamiliaRepository;
+//import com.projeto.bolsafamilia.repository.BolsafamiliaRepository;
 import com.projeto.bolsafamilia.service.BolsafamiliaService;
 
-import jakarta.persistence.criteria.Predicate;
+//import jakarta.persistence.criteria.Predicate;
 
 
 @RestController
@@ -31,24 +30,43 @@ import jakarta.persistence.criteria.Predicate;
 @CrossOrigin(origins = "*")
 public class Bolsafamiliacontroller {
 
-    @Autowired
-    private BolsafamiliaRepository repository;
+    //@Autowired
+    //private BolsafamiliaRepository repository;
     @Autowired
     private BolsafamiliaService service;
     //busca os dados do banco de dados, e retorna uma página de resultados, com base nos parâmetros de busca e paginação fornecidos na URL
     //
-    @GetMapping("/busca")
-    public 
+   @GetMapping("/busca")
+public Page<Bolsafamiliamodel> busca(
+        @RequestParam(required = false) Long id,
+        @RequestParam(required = false) String nome,
+        @RequestParam(required = false) String uf,
+        @RequestParam(required = false) String nomeMunicipio,
+        @RequestParam(required = false) String competencia,
+        @RequestParam(required = false) String nisFavorecido,
+        @RequestParam(required = false) BigDecimal valorMinimo,
+        @RequestParam(required = false) BigDecimal valorMaximo,
+        @RequestParam(defaultValue = "0") int pagina,
+        @RequestParam(defaultValue = "10") int tamanho) {
+
+    return service.Busca(
+            id,
+            nome,
+            uf,
+            nomeMunicipio,
+            competencia,
+            nisFavorecido,
+            valorMinimo,
+            valorMaximo,
+            pagina,
+            tamanho
+    );
+}
     
     //encontra todos os dados do banco de dados, e retorna uma página de resultados, com base nos parâmetros de paginação fornecidos na URL
-    @GetMapping("/todos")
-    public Page<Bolsafamiliamodel> todosRegistros(
-        @RequestParam(defaultValue = "0") int pagina,
-        @RequestParam(defaultValue = "20") int tamanho) {
-
+    //@GetMapping("/todos")
+    
     // Criamos a paginação explicitando que queremos ordenar pelo campo "id" de forma ASCENDENTE (do menor para o maior)
-    Pageable paginacao = PageRequest.of(pagina, tamanho, Sort.by("id").ascending());
-
-    return repository.findAll(paginacao);
-    }
+    // Pageable paginacao = PageRequest.of(pagina, tamanho, Sort.by("id").ascending());return repository.findAll(paginacao);
 }
+

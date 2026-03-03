@@ -18,12 +18,23 @@ public class BolsafamiliaService {
     @Autowired
     private BolsafamiliaRepository repository;
 
-    public Page<Bolsafamiliamodel> listarTodos(int pagina, int tamanho){
+    public Page<Bolsafamiliamodel> listarTodos(
+        int pagina,
+        int tamanho) {
         return repository.findAll(PageRequest.of(pagina, tamanho));
     }
     
-    public Page<Bolsafamiliamodel> Filtrar(Long id, String nome, String uf, String nomeMunicipio, String competencia, String nisFavorecido, BigDecimal valorMinimo, BigDecimal valorMaximo, int pagina, int tamanho){
-        {
+    public Page<Bolsafamiliamodel> Busca(
+        Long id,
+        String nome,
+        String uf,
+        String nomeMunicipio,
+        String competencia,
+        String nisFavorecido,
+        BigDecimal valorMinimo,
+        BigDecimal valorMaximo,
+        int pagina,
+        int tamanho) {
         Specification<Bolsafamiliamodel> spec = (root, query, cb) -> {
             List<Predicate> predicates = new ArrayList<>();
             
@@ -60,5 +71,4 @@ public class BolsafamiliaService {
         };
         return repository.findAll(spec, PageRequest.of(pagina, tamanho));
      }
-    }
 }
