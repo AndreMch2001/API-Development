@@ -3,15 +3,9 @@
 package com.projeto.bolsafamilia.controller;
 
 import java.math.BigDecimal;
-//import java.util.ArrayList;
-//import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-//import org.springframework.data.domain.PageRequest;
-//import org.springframework.data.domain.Pageable;
-//import org.springframework.data.domain.Sort;
-//import org.springframework.data.jpa.domain.Specification;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -43,6 +37,8 @@ public class Bolsafamiliacontroller {
         @RequestParam(required = false) String nome,
         @RequestParam(required = false) String uf,
         @RequestParam(required = false) String nomeMunicipio,
+        @RequestParam(required = false) String codigoMunicipioSiafi,
+        @RequestParam(required = false) String cpdFavorecido,
         @RequestParam(required = false) String competencia,
         @RequestParam(required = false) String nisFavorecido,
         @RequestParam(required = false) BigDecimal valorMinimo,
@@ -51,16 +47,18 @@ public class Bolsafamiliacontroller {
         @RequestParam(defaultValue = "20") int tamanho) {
 
     return service.Busca(
-            id,
-            nome,
-            uf,
-            nomeMunicipio,
-            competencia,
-            nisFavorecido,
-            valorMinimo,
-            valorMaximo,
-            pagina,
-            tamanho
+        id,
+        nome,
+        uf,
+        nomeMunicipio,
+        codigoMunicipioSiafi,
+        competencia,
+        nisFavorecido,
+        cpdFavorecido,
+        valorMinimo,
+        valorMaximo,
+        pagina,
+        tamanho
     );
 }
     @GetMapping("/todos")

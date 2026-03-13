@@ -23,17 +23,27 @@ public class Bolsafamiliamodel {
     private Long id;
 
     private String competencia;
-    private String uf;
     
+    @Column(name = "mes_referencia")
+    private String mesReferencia;
+
+    private String uf;
+  
+    @Column(name = "codigo_municipio_siafi")
+    private String codigoMunicipioSiafi;
+
     @Column(name = "nome_municipio")
     private String nomeMunicipio;
     
+    @Column(name="cpf_favorecido")
+    private String cpfFavorecido;
+
+    @Column(name = "nis_favorecido")
+    private String nisFavorecido;
+
     @Column(name = "nome_favorecido")
     private String nomeFavorecido;
     
     @Column(name = "valor_parcela")
     private BigDecimal valorParcela;
-    
-    @Column(name = "nis_favorecido")
-    private String nisFavorecido;
 }

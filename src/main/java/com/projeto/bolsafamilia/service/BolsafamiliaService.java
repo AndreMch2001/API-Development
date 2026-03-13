@@ -8,12 +8,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.jpa.domain.Specification;
+import org.springframework.stereotype.Service;
 
 import com.projeto.bolsafamilia.model.Bolsafamiliamodel;
 import com.projeto.bolsafamilia.repository.BolsafamiliaRepository;
 
 import jakarta.persistence.criteria.Predicate;
 
+@Service
 public class BolsafamiliaService {
     @Autowired
     private BolsafamiliaRepository repository;
@@ -24,51 +26,84 @@ public class BolsafamiliaService {
         return repository.findAll(PageRequest.of(pagina, tamanho));
     }
     
-    public Page<Bolsafamiliamodel> Busca(
+   public Page<Bolsafamiliamodel> Busca(
         Long id,
         String nome,
         String uf,
         String nomeMunicipio,
+        String codigoMunicipioSiafi,
         String competencia,
         String nisFavorecido,
+        String cpdFavorecido,
         BigDecimal valorMinimo,
         BigDecimal valorMaximo,
         int pagina,
         int tamanho) {
-        Specification<Bolsafamiliamodel> spec = (root, query, cb) -> {
-            List<Predicate> predicates = new ArrayList<>();
-            
-            if (nome != null && !nome.isEmpty()) {
-                predicates.add(cb.like(cb.lower(root.get("nomeFavorecido")), "%" + nome.toLowerCase() + "%"));
-            }
-            
-            if (uf != null && !uf.isEmpty()) {
-                predicates.add(cb.equal(cb.upper(root.get("uf")), uf.toUpperCase()));
-            }
-            
-            if (nomeMunicipio != null && !nomeMunicipio.isEmpty()) {
-                predicates.add(cb.like(cb.lower(root.get("nomeMunicipio")), "%" + nomeMunicipio.toLowerCase() + "%"));
-            }
-            
-            if (competencia != null && !competencia.isEmpty()) {
-                predicates.add(cb.equal(root.get("competencia"), competencia));
-            }
-            
-            if (nisFavorecido != null && !nisFavorecido.isEmpty()) {
-                predicates.add(cb.equal(root.get("nisFavorecido"), nisFavorecido));
-            }
-            
-            if (valorMinimo != null) {
-                predicates.add(cb.greaterThanOrEqualTo(root.get("valorParcela"), valorMinimo));
-            }
-            
-            if (valorMaximo != null) {
-                predicates.add(cb.lessThanOrEqualTo(root.get("valorParcela"), valorMaximo));
-            }
-            
-            return cb.and(predicates.toArray(Predicate[]::new));
-            
-        };
-        return repository.findAll(spec, PageRequest.of(pagina, tamanho));
-     }
+
+    Specification<Bolsafamiliamodel> spec = (root, query, cb) -> {
+
+        List<Predicate> predicates = new ArrayList<>();
+
+        if (id != null) {
+            predicates.add(cb.equal(root.get("id"), id));
+        }
+
+        if (nome != null && !nome.isEmpty()) {
+            predicates.add(cb.like(
+                    cb.lower(root.get("nomeFavorecido")),"%" + nome.toLowerCase() + "%"));
+        }
+
+        if (uf != null && !uf.isEmpty()) {
+            predicates.add(cb.equal(
+                cb.upper(root.get("uf")),
+                    uf.toUpperCase()));
+        }
+
+        if (nomeMunicipio != null && !nomeMunicipio.isEmpty()) {
+            predicates.add(cb.like(
+                    cb.lower(root.get("nomeMunicipio")),
+                    "%" + nomeMunicipio.toLowerCase() + "%"));
+        }
+
+        if (codigoMunicipioSiafi != null && !codigoMunicipioSiafi.isEmpty()) {
+            predicates.add(cb.equal(
+                    root.get("codigoMunicipioSiafi"),
+                    codigoMunicipioSiafi));
+        }
+
+        if (competencia != null && !competencia.isEmpty()) {
+            predicates.add(cb.equal(
+                    root.get("competencia"),
+                    competencia));
+        }
+
+        if (nisFavorecido != null && !nisFavorecido.isEmpty()) {
+            predicates.add(cb.equal(
+                    root.get("nisFavorecido"),
+                    nisFavorecido));
+        }
+
+        if (cpdFavorecido != null && !cpdFavorecido.isEmpty()) {
+            predicates.add(cb.equal(
+                    root.get("cpfFavorecido"),
+                    cpdFavorecido));
+        }
+
+        if (valorMinimo != null) {
+            predicates.add(cb.greaterThanOrEqualTo(
+                    root.get("valorParcela"),
+                    valorMinimo));
+        }
+
+        if (valorMaximo != null) {
+            predicates.add(cb.lessThanOrEqualTo(
+                    root.get("valorParcela"),
+                    valorMaximo));
+        }
+
+        return cb.and(predicates.toArray(new Predicate[0]));
+    };
+
+    return repository.findAll(spec, PageRequest.of(pagina, tamanho));
+}
 }
