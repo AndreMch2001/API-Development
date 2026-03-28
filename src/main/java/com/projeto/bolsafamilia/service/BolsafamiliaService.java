@@ -23,6 +23,7 @@ public class BolsafamiliaService {
     public Page<Bolsafamiliamodel> listarTodos(
         int pagina,
         int tamanho) {
+            
         return repository.findAll(PageRequest.of(pagina, tamanho));
     }
     
