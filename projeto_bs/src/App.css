@@ -1,9 +1,21 @@
+:root{
+  /* CORES */
+  --bg-color-plano-de-fundo: #282c34;
+  --bg-color-painelLateral: #ff0000;
+  --bg-color-painelSuperior: #0000ff;
+
+  /*FONTE*/
+  --font-family-principal: 'Arial', sans-serif;
+    /*Tamnho das letras da pagina*/
+    --font-size-links-painelSuperior: 1px;
+}
+
 .App {
   text-align: center;
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: var(--bg-color-plano-de-fundo);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -13,3 +25,83 @@
   color: white;
 }
 
+.painelSuperior{
+  height: 10%;
+  width: 100%; 
+  position: fixed;
+  z-index: 2;
+  top: 0;
+  left: 0%;
+  background-color: var(--bg-color-painelSuperior);
+  display: flex;
+  align-items: center;
+}
+
+.listaNO {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end; /* 🔥 AQUI MUDA PRA DIREITA */
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0 20px;
+  gap: 20px;
+  width: 100%; /* importante pra empurrar pro canto */
+}
+.elementoListaNO-Entrar .elementoListaNO-Cadastro{
+  padding: 10px 20px;
+  background-color: #ff06ff01;
+  border-radius: 5px;
+}
+.elementoHamburger{
+  background-color: rgb(166, 255, 0);
+}
+.imgElemento-hamburger{
+  width: 30px;
+  height: 30px;
+  position: fixed;
+  top: 10px;
+  left: 10px;
+
+}
+/* PAINEL LATERAL */
+.painelLateral{
+  height: 90%;
+  width: 15%;
+  position: fixed;
+  z-index: 1;
+  top: 10%;
+  left: 0;
+  background-color: var(--bg-color-painelLateral);
+}
+
+/* LISTA LATERAL 
+.painelLateral > ul{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* ITENS LATERAIS 
+.painelLateral > ul > li{
+  padding: 15px;
+  color: #fff;
+  cursor: pointer;
+  background-color: #ff06ff01;
+}
+
+/* HOVER 
+.painelLateral ul li:hover{
+  background-color: #ff0000;
+}
+*/
+
+.txt_pg_principal{
+  color: #fff;
+  font-size: 40px;
+  margin-top: 20px;
+  position: absolute;
+  transform: translate(-50%, -8%);
+  top: 12%;
+  left: 50%;
+}
