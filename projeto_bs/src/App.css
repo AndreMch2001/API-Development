@@ -4,14 +4,19 @@
   --bg-color-painelLateral: #ff0000;
   --bg-color-painelSuperior: #0000ff;
 
-  /*FONTE*/
+  /* FONTES */
   --font-family-principal: 'Arial', sans-serif;
-    /*Tamnho das letras da pagina*/
-    --font-size-links-painelSuperior: 1px;
+  --font-family-secundaria: 'Verdana', sans-serif;
+
+  /* TAMANHOS DE FONTE */
+  --font-size-pequena: 12px;
+  --font-size-media: 16px;
+  --font-size-grande: 32px;
 }
 
 .App {
   text-align: center;
+  font-family: var(--font-family-principal);
 }
 
 .App-header {
@@ -20,88 +25,118 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  justify-content: flex-start;
   color: white;
 }
 
+/* PAINEL SUPERIOR */
 .painelSuperior{
-  height: 10%;
+  height: 70px;
   width: 100%; 
   position: fixed;
   z-index: 2;
   top: 0;
-  left: 0%;
+  left: 0;
   background-color: var(--bg-color-painelSuperior);
   display: flex;
   align-items: center;
 }
 
+/* LISTA SUPERIOR */
 .listaNO {
   display: flex;
   flex-direction: row;
-  justify-content: flex-end; /* 🔥 AQUI MUDA PRA DIREITA */
+  justify-content: flex-end;
   align-items: center;
   list-style: none;
   margin: 0;
   padding: 0 20px;
   gap: 20px;
-  width: 100%; /* importante pra empurrar pro canto */
+  width: 100%;
 }
-.elementoListaNO-Entrar .elementoListaNO-Cadastro{
+
+/* ITENS DA LISTA */
+.elementoListaNO-Entrar,
+.elementoListaNO-Cadastrar {
   padding: 10px 20px;
-  background-color: #ff06ff01;
   border-radius: 5px;
 }
-.elementoHamburger{
-  background-color: rgb(166, 255, 0);
+
+/* LINKS (texto menor e fonte secundária) */
+.linkElemento-Entrar,
+.linkElemento-Cadastrar {
+  color: white;
+  text-decoration: none;
+  font-family: var(--font-family-secundaria);
+  font-size: var(--font-size-media);
 }
+
+/* HAMBURGER */
+.elementoHamburger{
+  position: absolute;
+  left: 10px;
+}
+
 .imgElemento-hamburger{
   width: 30px;
   height: 30px;
-  position: fixed;
-  top: 10px;
-  left: 10px;
-
+  cursor: pointer;
 }
+
 /* PAINEL LATERAL */
 .painelLateral{
-  height: 90%;
-  width: 15%;
+  height: calc(100% - 70px);
+  width: 200px;
   position: fixed;
   z-index: 1;
-  top: 10%;
+  top: 70px;
   left: 0;
   background-color: var(--bg-color-painelLateral);
 }
 
-/* LISTA LATERAL 
-.painelLateral > ul{
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-/* ITENS LATERAIS 
-.painelLateral > ul > li{
-  padding: 15px;
-  color: #fff;
-  cursor: pointer;
-  background-color: #ff06ff01;
-}
-
-/* HOVER 
-.painelLateral ul li:hover{
-  background-color: #ff0000;
-}
-*/
-
+/* TEXTO CENTRAL (fonte principal + grande) */
 .txt_pg_principal{
   color: #fff;
-  font-size: 40px;
-  margin-top: 20px;
-  position: absolute;
-  transform: translate(-50%, -8%);
-  top: 12%;
-  left: 50%;
+  font-family: var(--font-family-principal);
+  font-size: var(--font-size-grande);
+  margin-top: 100px;
+}
+
+/*---responsividade---*/
+@media (max-width: 768px){
+  .painelLateral{
+    width: 0;
+    overflow: hidden;
+  }
+
+  .painelSuperior{
+    justify-content: center;
+  }
+
+  .listaNO{
+    justify-content: center;
+    gap: 10px;
+  }
+
+  /* texto médio no mobile */
+  .txt_pg_principal{
+    font-size: var(--font-size-media);
+  }
+
+  .imgElemento-hamburger{
+    width: 35px;
+    height: 35px;
+  }
+}
+
+@media (max-width: 480px){
+  .listaNO{
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  /* texto pequeno em telas muito pequenas */
+  .txt_pg_principal{
+    font-size: var(--font-size-pequena);
+  }
 }

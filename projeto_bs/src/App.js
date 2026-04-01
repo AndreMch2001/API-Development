@@ -1,60 +1,68 @@
 import './App.css';
-/*function BtnTest(){ /*Função para Mostrar o Botão na tela
-  function FuncBtnTest(){ /*caso de tudo certo
-    try {/*Try caso tudo de certo
-      return(
-         window.confirm("Tem certeza?"),
-         console.log("FuncBtnTest - Try - 200")
-      )
-    } catch (error) { /*Catch caso algo de errado
-      return(
-        window.alert("Deu Certo Motivo : "),
-        console.log("FuncBtnTest - catch - Erro:" + error)
-        
-      );
-    } finally { /*caso de certo ou errado ele vai executar isso
-      return(
-        console.log("FuncBtnTest - Finally - 200")
-      );  
-    }
-  }
-    function btnOptLateral(){
-  
-}
- 
-  return(
-    <button onClick={FuncBtnTest}>Clique em Mim Para testar o Sistema</button>
-  );
-}
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import CadastroPage from './components/pages/CadastroPage.js';
+import LoginPage from './components/pages/LoginPage.js';
+import UsuarioPage from './components/pages/UsuarioPage.js';
 
 /*--------------------------------------------------------------------------*/
 
 function App() {
   return (
-    <main class="App-header">
+    <BrowserRouter>
+      <main className="App-header"> {/* seção Principal */}
 
-      <section class="App">
+        {/* Seção do APP o que realmente vai ser renderizado */}
+        <section className="App">
 
-        <section class="painelSuperior" id="painelSuperior">
-          <div class="elementoHamburger" id="elementoHamburger">
-            <img class="imgElemento-hamburger"src="/hamburger.png" alt="Menu" />
-          </div>
-          <ul class="listaNO" id="listaNO"> 
-            <li class="elementoListaNO-Entrar">
-              <a class="linkElemento-Entrar" href="https://www.google.com.br/" target="_blank" rel="noopener noreferrer">Entrar</a>
-            </li>
-            <li class="elementoListaNO-Cadastrar">
-              <a class="linkElemento-Cadastrar" href="https://www.google.com.br/" target="_blank" rel="noopener noreferrer">Cadastrar</a>
-            </li>
-          </ul>
+          {/* Seção painelSuperior usada como uma navegação clássica */}
+          <section className="painelSuperior" id="painelSuperior">
+            
+            {/* Div usada pra encapsular uma imagem de hamburger */}
+            <div className="elementoHamburger" id="elementoHamburger">
+              <img className="imgElemento-hamburger" src="/hamburger.png" alt="Menu" />
+            </div>
+
+            {/* Lista de navegação */}
+            <ul className="listaNO" id="listaNO">
+
+              {/* Botão de login */}
+              <li className="elementoListaNO-Entrar">
+                <a className="linkElemento-Entrar"
+                   href="/loginpage">
+                  Entrar
+                </a>
+              </li>
+
+              {/* Botão de cadastro */}
+              <li className="elementoListaNO-Cadastrar">
+                <a className="linkElemento-Cadastrar" 
+                   href="/cadastroage">
+                  Cadastrar
+                </a>
+              </li>
+            
+            </ul>
+
+            {/* Rotas do sistema */}
+            <Routes>
+              <Route path="/" element={<></>} />
+              <Route path="/cadastroage" element={<CadastroPage />} />
+              <Route path="/loginpage" element={<LoginPage />} />
+              <Route path="/usuariopage" element={<UsuarioPage />} />
+            </Routes> 
+          </section>
+
+          {/* texto central */}
+          <h1 className="txt_pg_principal">Seja Bem-vindo(a)</h1> 
+
+          {/* painel lateral */}
+          <section className="painelLateral" id="painelLateral">
+          </section>
+
         </section>
 
-        <h1 class="txt_pg_principal">Seja Bem-vindo(a)</h1> 
-
-        <section class="painelLateral" id="painelLateral">
-        </section>
-      </section>
-    </main>
+      </main>
+    </BrowserRouter>
   );
 }
 
