@@ -1,0 +1,64 @@
+:root{
+    --bg-color-painelSuperior: #0000ff;
+    /* FONTES */
+    --font-family-principal: 'Arial', sans-serif;
+    --font-family-secundaria: 'Verdana', sans-serif;
+
+      /* TAMANHOS DE FONTE */
+    --font-size-pequena: 12px;
+    --font-size-media: 16px;
+    --font-size-grande: 32px;
+}
+/* PAINEL SUPERIOR */
+.painelSuperior{
+  height: 70px;
+  width: 100%; 
+  position: fixed;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  background-color: var(--bg-color-painelSuperior);
+  display: flex;
+  align-items: center;
+}
+
+/* LISTA SUPERIOR */
+.listaNO {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0 20px;
+  gap: 20px;
+  width: 100%;
+}
+
+/* ITENS DA LISTA */
+.elementoListaNO-Entrar,
+.elementoListaNO-Cadastrar {
+  padding: 10px 20px;
+  border-radius: 5px;
+}
+
+/* LINKS (texto menor e fonte secundária) */
+.linkElemento-Entrar,
+.linkElemento-Cadastrar {
+  color: white;
+  text-decoration: none;
+  font-family: var(--font-family-secundaria);
+  font-size: var(--font-size-media);
+}
+
+/* HAMBURGER */
+.elementoHamburger{
+  position: absolute;
+  left: 10px;
+}
+
+.imgElemento-hamburger{
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
