@@ -1,5 +1,6 @@
 :root{
     --bg-color-painelSuperior: #0000ff;
+    --color-txt-links:white;
     /* FONTES */
     --font-family-principal: 'Arial', sans-serif;
     --font-family-secundaria: 'Verdana', sans-serif;
@@ -8,6 +9,12 @@
     --font-size-pequena: 12px;
     --font-size-media: 16px;
     --font-size-grande: 32px;
+
+    /*hamburguer*/
+    --imgElementohamburger_width: 35px;
+    --imgElementohamburger_height:35px;
+    --imgElementohamburger_margin_left:25px;
+
 }
 /* PAINEL SUPERIOR */
 .painelSuperior{
@@ -36,16 +43,16 @@
 }
 
 /* ITENS DA LISTA */
-.elementoListaNO-Entrar,
-.elementoListaNO-Cadastrar {
+.elementoListaNO1,
+.elementoListaNO2 {
   padding: 10px 20px;
   border-radius: 5px;
 }
 
 /* LINKS (texto menor e fonte secundária) */
-.linkElemento-Entrar,
-.linkElemento-Cadastrar {
-  color: white;
+.linkElemento1,
+.linkElemento2 {
+  color: var(--color-txt-links);
   text-decoration: none;
   font-family: var(--font-family-secundaria);
   font-size: var(--font-size-media);
@@ -54,11 +61,11 @@
 /* HAMBURGER */
 .elementoHamburger{
   position: absolute;
-  left: 10px;
+  margin-left:var(--imgElementohamburger_margin_left);
 }
 
-.imgElemento-hamburger{
-  width: 30px;
-  height: 30px;
+.imgElementohamburger{
+  width: var(--imgElementohamburger_width);
+  height: var(--imgElementohamburger_height);
   cursor: pointer;
 }
