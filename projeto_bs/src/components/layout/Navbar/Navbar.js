@@ -5,7 +5,7 @@ function Navbar({ tipo }) {
   return (
     <section className={style.painelSuperior}>
 
-      {tipo === "1" && (
+      {tipo === 1 && (
         <ul className={style.listaNO}>
           <li className={style.elementoListaNO1}>
             <Link className={style.linkElemento1} to="/loginpage">
@@ -21,7 +21,7 @@ function Navbar({ tipo }) {
         </ul>
       )}
 
-      {tipo === "2" && (
+      {tipo === 2 && (
         <ul className={style.listaNO}>
           <li className={style.elementoListaNO1}>
             <Link className={style.linkElemento1} to="/usuariopage">

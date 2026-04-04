@@ -11,7 +11,7 @@ import Navbar from "./components/layout/Navbar/Navbar.js";
 import PainelLateral from "./components/layout/PainelLateral/PainelLateral.js";
 
 function App() {
-  const [tipo, setTipo] = useState(1); // 1 = público | 2 = privado
+  const estadoAplicação = 1 // 1 = público | 2 = privado
 
   return (
     <BrowserRouter>
@@ -19,12 +19,12 @@ function App() {
         <div className="layout">
           <section className="App">
 
-            {tipo === 2 && <Navbar tipo={tipo} />}
-            {tipo === 2 && <PainelLateral tipo={tipo} />}
+            <Navbar tipo={estadoAplicação} />
+            <PainelLateral tipo={estadoAplicação} />
 
             <Container>
               <Routes>
-                <Route path="/" element={<h1 className="txt_pg_principal">Seja Bem-vindo(a)</h1>} />
+                <Route path="/" element={<></>} />
                 <Route path="/cadastroage" element={<CadastroPage />} />
                 <Route path="/loginpage" element={<LoginPage />} />
                 <Route path="/usuariopage" element={<UsuarioPage />} />
