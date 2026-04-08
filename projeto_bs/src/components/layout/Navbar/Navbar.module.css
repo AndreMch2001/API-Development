@@ -10,16 +10,21 @@
     --font-size-media: 16px;
     --font-size-grande: 32px;
 
-    /*hamburguer*/
+      /*hamburguer*/
     --imgElementohamburger_width: 35px;
     --imgElementohamburger_height:35px;
+    --imgElementohamburger_margin_left:25px;
+
+      /*hamburguer*/
+    --painelSuperior_width: 100%;
+    --painelSuperior_height: 11%;
     --imgElementohamburger_margin_left:25px;
 
 }
 /* PAINEL SUPERIOR */
 .painelSuperior{
-  height: 70px;
-  width: 100%; 
+  height: var(--painelSuperior_height);
+  width: var(--painelSuperior_width); 
   position: fixed;
   z-index: 2;
   top: 0;
