@@ -1,0 +1,81 @@
+:root{
+  /* CORES */
+  --bg-color-plano-de-fundo: #282c34;
+  --bg-color-painelLateral: #ff0000;
+  
+  /* FONTES */
+  --font-family-principal: 'Arial', sans-serif;
+  --font-family-secundaria: 'Verdana', sans-serif;
+
+  /* TAMANHOS DE FONTE */
+  --font-size-pequena: 12px;
+  --font-size-media: 16px;
+  --font-size-grande: 32px;
+}
+
+.App {
+  text-align: center;
+  font-family: var(--font-family-principal);
+}
+
+.App-header {
+  background-color: var(--bg-color-plano-de-fundo);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  color: white;
+}
+
+/* PAINEL LATERAL */
+.painelLateral{
+  height: calc(100% - 70px);
+  width: 200px;
+  position: fixed;
+  z-index: 1;
+  top: 70px;
+  left: 0;
+  background-color: var(--bg-color-painelLateral);
+}
+
+/* TEXTO CENTRAL (fonte principal + grande) */
+.txt_pg_principal{
+  color: #fff;
+  font-family: var(--font-family-principal);
+  font-size: var(--font-size-grande);
+  margin-top: 100px;
+}
+
+/*---responsividade---*/
+@media (max-width: 768px){
+  .painelLateral{
+    width: 0;
+    overflow: hidden;
+  }
+
+  .painelSuperior{
+    justify-content: center;
+  }
+
+  .listaNO{
+    justify-content: center;
+    gap: 10px;
+  }
+
+  /* texto médio no mobile */
+  .txt_pg_principal{
+    font-size: var(--font-size-media);
+  }
+}
+@media (max-width: 480px){
+  .listaNO{
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  /* texto pequeno em telas muito pequenas */
+  .txt_pg_principal{
+    font-size: var(--font-size-pequena);
+  }
+}

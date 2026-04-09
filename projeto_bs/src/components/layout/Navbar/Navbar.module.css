@@ -1,0 +1,76 @@
+:root{
+    --bg-color-painelSuperior: #0000ff;
+    --color-txt-links:white;
+    /* FONTES */
+    --font-family-principal: 'Arial', sans-serif;
+    --font-family-secundaria: 'Verdana', sans-serif;
+
+      /* TAMANHOS DE FONTE */
+    --font-size-pequena: 12px;
+    --font-size-media: 16px;
+    --font-size-grande: 32px;
+
+      /*hamburguer*/
+    --imgElementohamburger_width: 35px;
+    --imgElementohamburger_height:35px;
+    --imgElementohamburger_margin_left:25px;
+
+      /*hamburguer*/
+    --painelSuperior_width: 100%;
+    --painelSuperior_height: 11%;
+    --imgElementohamburger_margin_left:25px;
+
+}
+/* PAINEL SUPERIOR */
+.painelSuperior{
+  height: var(--painelSuperior_height);
+  width: var(--painelSuperior_width); 
+  position: fixed;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  background-color: var(--bg-color-painelSuperior);
+  display: flex;
+  align-items: center;
+}
+
+/* LISTA SUPERIOR */
+.listaNO {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0 20px;
+  gap: 20px;
+  width: 100%;
+}
+
+/* ITENS DA LISTA */
+.elementoListaNO1,
+.elementoListaNO2 {
+  padding: 10px 20px;
+  border-radius: 5px;
+}
+
+/* LINKS (texto menor e fonte secundária) */
+.linkElemento1,
+.linkElemento2 {
+  color: var(--color-txt-links);
+  text-decoration: none;
+  font-family: var(--font-family-secundaria);
+  font-size: var(--font-size-media);
+}
+
+/* HAMBURGER */
+.elementoHamburger{
+  position: absolute;
+  margin-left:var(--imgElementohamburger_margin_left);
+}
+
+.imgElementohamburger{
+  width: var(--imgElementohamburger_width);
+  height: var(--imgElementohamburger_height);
+  cursor: pointer;
+}
