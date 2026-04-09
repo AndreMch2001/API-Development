@@ -9,10 +9,16 @@ function Navbar({ tipo }) {
       )}
 
       {tipo === 1 && (
+<<<<<<< HEAD
         <section className={Style.painelSuperior}>
         <ul className={Style.listaNO}>
           <li className={Style.elementoListaNO1}>
             <Link className={Style.linkElemento1} to="/loginpage">
+=======
+        <ul className={style.listaNO}>
+          <li className={style.elementoListaNO1}>
+            <Link className={style.linkElemento1} to="/loginpage">
+>>>>>>> c455510776df89da86e2eb2a95ef043d8ad74f0b
               Entrar
             </Link>
           </li>
@@ -27,10 +33,16 @@ function Navbar({ tipo }) {
       )}
 
       {tipo === 2 && (
+<<<<<<< HEAD
       <section className={Style.painelSuperior}>
         <ul className={Style.listaNO}>
           <li className={Style.elementoListaNO1}>
             <Link className={Style.linkElemento1} to="/usuariopage">
+=======
+        <ul className={style.listaNO}>
+          <li className={style.elementoListaNO1}>
+            <Link className={style.linkElemento1} to="/usuariopage">
+>>>>>>> c455510776df89da86e2eb2a95ef043d8ad74f0b
               Usuário
             </Link>
           </li>

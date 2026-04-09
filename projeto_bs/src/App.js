@@ -26,7 +26,7 @@ function App() {
               <PainelLateral tipo={ValorTipo}/>
         
               <Routes>
-                <Route path="/" element={<h1 className="txt_pg_principal">Seja Bem-vindo(a)</h1>} />
+                <Route path="/" element={<></>} />
                 <Route path="/cadastroage" element={<CadastroPage />} />
                 <Route path="/loginpage" element={<LoginPage />} />
                 <Route path="/usuariopage" element={<UsuarioPage />} />
