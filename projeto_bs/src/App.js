@@ -8,11 +8,15 @@ import UsuarioPage from './components/pages/Usuario/UsuarioPage.js';
 import Container from "./components/layout/Container/Container.js";
 import Navbar from "./components/layout/Navbar/Navbar.js";
 import PainelLateral from "./components/layout/PainelLateral/PainelLateral.js";
+import Pesquisa_Resultado from './components/layout/ResultadosPesquisa/Pesquisa_Resultado.js';
 /*
+Sem Nada = 0
 Antes do Login = 1
 Depois do Login = 2
 */
-const ValorTipo = 2;
+const ValorTipo_Navbar = 2;
+const ValorTipo_PainelLateral = 2;
+const ValorTipo_Pesquisa_Resultado = 1;
 
 function App() {
   return (
@@ -22,8 +26,9 @@ function App() {
           <section className="App">
             <Container>
             
-              <Navbar tipo={1}/>
-              <PainelLateral tipo={ValorTipo}/>
+              <Navbar tipo={ValorTipo_Navbar}/>
+              <PainelLateral tipo={ValorTipo_PainelLateral}/>
+              <Pesquisa_Resultado tipo={ValorTipo_Pesquisa_Resultado}/>
         
               <Routes>
                 <Route path="/" element={<></>} />
