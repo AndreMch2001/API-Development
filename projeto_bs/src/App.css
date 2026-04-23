@@ -18,14 +18,21 @@
   font-family: var(--font-family-principal);
 }
 
+.appRaiz {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
 .App-header {
   background-color: var(--bg-color-plano-de-fundo);
-  min-height: 100vh;
+  flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
   color: white;
+  padding-bottom: 52px;
 }
 
 /* PAINEL LATERAL */

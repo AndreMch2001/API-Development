@@ -8,13 +8,19 @@ import UsuarioPage from './components/pages/Usuario/UsuarioPage.js';
 import Container from "./components/layout/Container/Container.js";
 import Navbar from "./components/layout/Navbar/Navbar.js";
 import PainelLateral from "./components/layout/PainelLateral/PainelLateral.js";
+<<<<<<< HEAD
 import PesquisaResultado from './components/layout/ResultadosPesquisa/PesquisaResultado.js';
+=======
+import PesquisaResultado from './components/layout/Pesquisa_Resultado/PesquisaResultado.js';
+import Footer from './components/layout/Footer/Footer.js';
+>>>>>>> 7dd11c6455da8514f56528b4da939fe455ed5777
 
 /*
 Sem Nada = 0
 Antes do Login = 1
 Depois do Login = 2
 */
+
 const ValorTipo_Navbar = 2;
 const ValorTipo_PainelLateral = 2;
 const ValorTipo_Pesquisa_Resultado = 1;
@@ -22,6 +28,7 @@ const ValorTipo_Pesquisa_Resultado = 1;
 function App() {
   return (
     <BrowserRouter>
+<<<<<<< HEAD
       <main className="App-header">
         <div className="layout">
           <section className="App">
@@ -38,11 +45,29 @@ function App() {
                 <Route path="/usuariopage" element={<UsuarioPage />} />
               </Routes>
             </Container> 
+=======
+      <div className="appRaiz">
+        <main className="App-header">
+          <div className="layout">
+            <section className="App">
+              <Container>
+                <Navbar tipo={ValorTipo_Navbar} />
+                <PainelLateral tipo={ValorTipo_PainelLateral} />
+                <PesquisaResultado tipo={ValorTipo_Pesquisa_Resultado} />
+>>>>>>> 7dd11c6455da8514f56528b4da939fe455ed5777
 
-          </section>
-        </div>
-        
-      </main>
+                <Routes>
+                  <Route path="/" element={<></>} />
+                  <Route path="/cadastroage" element={<CadastroPage />} />
+                  <Route path="/loginpage" element={<LoginPage />} />
+                  <Route path="/usuariopage" element={<UsuarioPage />} />
+                </Routes>
+              </Container>
+            </section>
+          </div>
+        </main>
+        <Footer />
+      </div>
     </BrowserRouter>
   );
 }
