@@ -8,12 +8,15 @@ import UsuarioPage from './components/pages/Usuario/UsuarioPage.js';
 import Container from "./components/layout/Container/Container.js";
 import Navbar from "./components/layout/Navbar/Navbar.js";
 import PainelLateral from "./components/layout/PainelLateral/PainelLateral.js";
-import Pesquisa_Resultado from './components/layout/ResultadosPesquisa/Pesquisa_Resultado.js';
+import PesquisaResultado from './components/layout/Pesquisa_Resultado/PesquisaResultado.js';
+import Footer from './components/layout/Footer/Footer.js';
+
 /*
 Sem Nada = 0
 Antes do Login = 1
 Depois do Login = 2
 */
+
 const ValorTipo_Navbar = 2;
 const ValorTipo_PainelLateral = 2;
 const ValorTipo_Pesquisa_Resultado = 1;
@@ -21,27 +24,27 @@ const ValorTipo_Pesquisa_Resultado = 1;
 function App() {
   return (
     <BrowserRouter>
-      <main className="App-header">
-        <div className="layout">
-          <section className="App">
-            <Container>
-            
-              <Navbar tipo={ValorTipo_Navbar}/>
-              <PainelLateral tipo={ValorTipo_PainelLateral}/>
-              <Pesquisa_Resultado tipo={ValorTipo_Pesquisa_Resultado}/>
-        
-              <Routes>
-                <Route path="/" element={<></>} />
-                <Route path="/cadastroage" element={<CadastroPage />} />
-                <Route path="/loginpage" element={<LoginPage />} />
-                <Route path="/usuariopage" element={<UsuarioPage />} />
-              </Routes>
-            </Container> 
+      <div className="appRaiz">
+        <main className="App-header">
+          <div className="layout">
+            <section className="App">
+              <Container>
+                <Navbar tipo={ValorTipo_Navbar} />
+                <PainelLateral tipo={ValorTipo_PainelLateral} />
+                <PesquisaResultado tipo={ValorTipo_Pesquisa_Resultado} />
 
-          </section>
-        </div>
-        
-      </main>
+                <Routes>
+                  <Route path="/" element={<></>} />
+                  <Route path="/cadastroage" element={<CadastroPage />} />
+                  <Route path="/loginpage" element={<LoginPage />} />
+                  <Route path="/usuariopage" element={<UsuarioPage />} />
+                </Routes>
+              </Container>
+            </section>
+          </div>
+        </main>
+        <Footer />
+      </div>
     </BrowserRouter>
   );
 }
