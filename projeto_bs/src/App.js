@@ -8,7 +8,8 @@ import UsuarioPage from './components/pages/Usuario/UsuarioPage.js';
 import Container from "./components/layout/Container/Container.js";
 import Navbar from "./components/layout/Navbar/Navbar.js";
 import PainelLateral from "./components/layout/PainelLateral/PainelLateral.js";
-import Pesquisa_Resultado from './components/layout/ResultadosPesquisa/Pesquisa_Resultado.js';
+import PesquisaResultado from './components/layout/ResultadosPesquisa/PesquisaResultado.js';
+
 /*
 Sem Nada = 0
 Antes do Login = 1
@@ -28,7 +29,7 @@ function App() {
             
               <Navbar tipo={ValorTipo_Navbar}/>
               <PainelLateral tipo={ValorTipo_PainelLateral}/>
-              <Pesquisa_Resultado tipo={ValorTipo_Pesquisa_Resultado}/>
+              <PesquisaResultado tipo={ValorTipo_Pesquisa_Resultado}/>
         
               <Routes>
                 <Route path="/" element={<></>} />

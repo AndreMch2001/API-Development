@@ -10,10 +10,14 @@ function PainelLateral({ tipo }) {
                <></>
             )}
             {tipo === 2 && (
-                <section
-                className={style.painelLateral}
-                id="painelLateral">
-                {/*conteudo do painel lateral*/}
+                <section className={style.painelLateral} id="painelLateral">
+                    {/*<ul>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                    </ul>*/}
                 </section>
             )}
         </>
