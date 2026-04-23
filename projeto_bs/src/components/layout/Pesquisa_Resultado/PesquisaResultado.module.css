@@ -1,136 +1,94 @@
-:root {
-  --shell-top: 70px;
-  --shell-left: 200px;
-  --altura-footer: 52px;
+:root{
+    --SecaoFiltro-width:25%;
+    --SecaoFiltro-height:90%;
+    --SecaoFiltro-bg-color:rgb(0, 255, 98);
+    --SecaoFiltro-left: 100%;
+    --SecaoFiltro-top: 100%;
+
+  /*Stylo, opção 2*/
+    --SectionResultadosPesquisa_height: 100%;
+    --SectionResultadosPesquisa_width: 100%;
+    --Bg_Color_SectionResultadosPesquisa: aqua;
+    --Bg_Color_inputWrapper:purple;
+    --Bg_Color_input:blue;
+    --Bg_Color_button:red;
+}
+ .SecaoFiltro{
+    width: var(--SecaoFiltro-width);
+    height: var(--SecaoFiltro-height);
+    background-color: var(--SecaoFiltro-bg-color);
+    margin: 0px;
+    padding: 0px;
+    position: absolute; /* obrigatório */
+    display:fixed;
+    top: var(--SecaoFiltro-top);
+    left: var(--SecaoFiltro-left);
+
+  transform: translate(
+    calc(-1 * var(--SecaoFiltro-left)),
+    calc(-1 * var(--SecaoFiltro-top))
+  );
+
+ }
+/*Stylo, opção 2*/
+/* Container central */
+.SectionResultadosPesquisa{
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--Bg_Color_SectionResultadosPesquisa);
 }
 
-.layoutContainer {
-  display: grid;
-  grid-template-columns: 320px 1fr;
-  height: 100vh;
-  background: #1a1d23;
-  color: #f3f4f6;
+/* Wrapper estilo ChatGPT */
+.inputWrapper {
+    display: flex;
+    align-items: center;
+    background: var(--Bg_Color_inputWrapper);
+    border-radius: 999px;
+    padding: 6px;
+    width: 100%;
+    max-width: 500px;
+    box-shadow: 0px 10px 30px -15px rgba(0,0,0,0.5);
 }
 
-/* ===== FILTRO ===== */
-
-.filterPanel {
-  background: #11141a;
-  border-right: 1px solid #2a2f38;
-  padding: 20px;
+/* Input */
+.input {
+    flex: 1;
+    height: 45px;
+    padding: 0 16px;
+    border-radius: 999px;
+    border: none;
+    outline: none;
+    background: var(--Bg_Color_input);
+    color: white;
+    font-size: 14px;
 }
 
-.filterTitle {
-  margin-bottom: 20px;
-  font-size: 18px;
+.input::placeholder {
+    color: #aaa;
 }
 
-.filterForm {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
+/* Botão redondo */
+.button {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    border: none;
+    background: var(--Bg_Color_button);
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.2s ease;
 }
 
-.fieldGroup {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
+/* Hover */
+.button:hover {
+    background: #666;
 }
 
-.fieldGroup label {
-  font-size: 12px;
-  color: #9ca3af;
-}
-
-.fieldGroup input {
-  height: 40px;
-  padding: 8px 12px;
-  border-radius: 8px;
-  border: 1px solid #3d4450;
-  background: #1e2229;
-  color: #fff;
-}
-
-.actions {
-  display: flex;
-  gap: 10px;
-  margin-top: 10px;
-}
-
-.actions button {
-  flex: 1;
-  height: 40px;
-  border-radius: 8px;
-  border: none;
-  cursor: pointer;
-}
-
-.actions button[type="submit"] {
-  background: #2563eb;
-  color: white;
-}
-
-.actions button[type="reset"] {
-  background: #374151;
-  color: white;
-}
-
-/* ===== RESULTADOS ===== */
-
-.resultsPanel {
-  padding: 24px;
-  overflow-y: auto;
-}
-
-.resultsHeader {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 20px;
-}
-
-.resultList {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.resultCard {
-  background: #2a2f38;
-  border: 1px solid #3d4450;
-  border-radius: 12px;
-  padding: 16px;
-}
-
-.resultName {
-  margin-bottom: 12px;
-  font-size: 16px;
-}
-
-.resultGrid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 12px;
-}
-
-.resultGrid span {
-  font-size: 11px;
-  color: #9ca3af;
-}
-
-.resultGrid p {
-  margin: 2px 0 0;
-  font-size: 14px;
-}
-
-/* ===== RESPONSIVO ===== */
-
-@media (max-width: 768px) {
-  .layoutContainer {
-    grid-template-columns: 1fr;
-  }
-
-  .filterPanel {
-    border-right: none;
-    border-bottom: 1px solid #2a2f38;
-  }
+/* Clique */
+.button:active {
+    transform: scale(0.9);
 }

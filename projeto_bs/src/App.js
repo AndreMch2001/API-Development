@@ -17,18 +17,21 @@ Antes do Login = 1
 Depois do Login = 2
 */
 
-const ValorTipo_Navbar = 2;
-const ValorTipo_PainelLateral = 2;
+const ValorTipo_Navbar = 0;
+const ValorTipo_PainelLateral = 0;
 const ValorTipo_Pesquisa_Resultado = 1;
 
 function App() {
   return (
     <BrowserRouter>
       <div className="appRaiz">
+
         <main className="App-header">
           <div className="layout">
+
             <section className="App">
               <Container>
+
                 <Navbar tipo={ValorTipo_Navbar} />
                 <PainelLateral tipo={ValorTipo_PainelLateral} />
                 <PesquisaResultado tipo={ValorTipo_Pesquisa_Resultado} />
@@ -39,11 +42,15 @@ function App() {
                   <Route path="/loginpage" element={<LoginPage />} />
                   <Route path="/usuariopage" element={<UsuarioPage />} />
                 </Routes>
+                
               </Container>
             </section>
+
           </div>
         </main>
+
         <Footer />
+
       </div>
     </BrowserRouter>
   );
