@@ -1,51 +1,47 @@
 import style from './Navbar.module.css';
 import { Link } from 'react-router-dom';
-
+import { LAYOUT_TYPE } from '../../../constants/layoutTypes';
+ 
 function Navbar({ tipo }) {
+  if (tipo === LAYOUT_TYPE.NONE) return null;
+ 
   return (
-    <>
-      {tipo === 0 && (
-        <></>
-      )}
-
-      {tipo === 1 && (
-        <section className={style.painelSuperior}>
-        <ul className={style.listaNO}>
-          <li className={style.elementoListaNO1}>
-            <Link className={style.linkElemento1} to="/loginpage">
-              Entrar
-            </Link>
-          </li>
-
-          <li className={style.elementoListaNO2}>
-            <Link className={style.linkElemento2} to="/cadastroage">
-              Cadastrar
-            </Link>
-          </li>
-        </ul>
-        </section>
-      )}
-
-      {tipo === 2 && (
-      <section className={style.painelSuperior}>
-        <ul className={style.listaNO}>
-          <li className={style.elementoListaNO1}>
-            <Link className={style.linkElemento1} to="/usuariopage">
-              Usuário
-            </Link>
-          </li>
-
-          <li className={style.elementoListaNO2}>
-            <Link className={style.linkElemento2} to="/dashboardpage">
-              Dashboard
-            </Link>
-          </li>
-        </ul>
-      </section>
-      )}
-    </>
+    <nav className={style.painelSuperior}>
+      <ul className={style.listaNO}>
+ 
+        {tipo === LAYOUT_TYPE.PRE_LOGIN && (
+          <>
+            <li className={style.elementoLista}>
+              <Link className={style.linkElemento} to="/login">
+                Entrar
+              </Link>
+            </li>
+            <li className={style.elementoLista}>
+              <Link className={style.linkElementoCTA} to="/cadastro">
+                Cadastrar
+              </Link>
+            </li>
+          </>
+        )}
+ 
+        {tipo === LAYOUT_TYPE.POST_LOGIN && (
+          <>
+            <li className={style.elementoLista}>
+              <Link className={style.linkElemento} to="/usuario">
+                Usuário
+              </Link>
+            </li>
+            <li className={style.elementoLista}>
+              <Link className={style.linkElemento} to="/dashboard">
+                Dashboard
+              </Link>
+            </li>
+          </>
+        )}
+ 
+      </ul>
+    </nav>
   );
-  
 }
-
+ 
 export default Navbar;

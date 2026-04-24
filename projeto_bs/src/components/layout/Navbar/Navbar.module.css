@@ -1,40 +1,35 @@
-:root{
-    --bg-color-painelSuperior: #0000ff;
-    --color-txt-links:white;
-    /* FONTES */
-    --font-family-principal: 'Arial', sans-serif;
-    --font-family-secundaria: 'Verdana', sans-serif;
-
-      /* TAMANHOS DE FONTE */
-    --font-size-pequena: 12px;
-    --font-size-media: 16px;
-    --font-size-grande: 32px;
-
-      /*hamburguer*/
-    --imgElementohamburger_width: 35px;
-    --imgElementohamburger_height:35px;
-    --imgElementohamburger_margin_left:25px;
-
-      /*hamburguer*/
-    --painelSuperior_width: 100%;
-    --painelSuperior_height: 11%;
-    --imgElementohamburger_margin_left:25px;
-
+/* =============================================
+   VARIÁVEIS LOCAIS DA NAVBAR
+   (as de fonte/cor vêm do App.css via :root)
+   ============================================= */
+:root {
+  --navbar-bg: #14161b;
+  --navbar-height: 60px;
+  --navbar-link-color: #ffffff;
+  --navbar-link-hover: #61dafb;
+  --navbar-cta-bg: #61dafb;
+  --navbar-cta-color: #14161b;
 }
-/* PAINEL SUPERIOR */
-.painelSuperior{
-  height: var(--painelSuperior_height);
-  width: var(--painelSuperior_width); 
+ 
+/* =============================================
+   PAINEL SUPERIOR (navbar fixa)
+   ============================================= */
+.painelSuperior {
+  height: var(--navbar-height);
+  width: 100%;
   position: fixed;
-  z-index: 2;
+  z-index: 200;
   top: 0;
   left: 0;
-  background-color: var(--bg-color-painelSuperior);
+  background-color: var(--navbar-bg);
+  border-bottom: 1px solid #2d323c;
   display: flex;
   align-items: center;
 }
-
-/* LISTA SUPERIOR */
+ 
+/* =============================================
+   LISTA DE NAVEGAÇÃO
+   ============================================= */
 .listaNO {
   display: flex;
   flex-direction: row;
@@ -42,35 +37,87 @@
   align-items: center;
   list-style: none;
   margin: 0;
-  padding: 0 20px;
-  gap: 20px;
+  padding: 0 24px;
+  gap: 8px;
   width: 100%;
 }
-
-/* ITENS DA LISTA */
-.elementoListaNO1,
-.elementoListaNO2 {
-  padding: 10px 20px;
-  border-radius: 5px;
+ 
+/* =============================================
+   ITENS
+   ============================================= */
+.elementoLista {
+  padding: 0;
 }
-
-/* LINKS (texto menor e fonte secundária) */
-.linkElemento1,
-.linkElemento2 {
-  color: var(--color-txt-links);
+ 
+/* =============================================
+   LINK PADRÃO
+   ============================================= */
+.linkElemento {
+  display: inline-block;
+  color: var(--navbar-link-color);
   text-decoration: none;
-  font-family: var(--font-family-secundaria);
-  font-size: var(--font-size-media);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 14px;
+  padding: 8px 16px;
+  border-radius: 6px;
+  transition: background 0.2s ease, color 0.2s ease;
 }
-
-/* HAMBURGER */
-.elementoHamburger{
+ 
+.linkElemento:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--navbar-link-hover);
+}
+ 
+/* =============================================
+   LINK CTA (botão de destaque — Cadastrar)
+   ============================================= */
+.linkElementoCTA {
+  display: inline-block;
+  color: var(--navbar-cta-color);
+  text-decoration: none;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 8px 16px;
+  border-radius: 6px;
+  background: var(--navbar-cta-bg);
+  transition: opacity 0.2s ease;
+}
+ 
+.linkElementoCTA:hover {
+  opacity: 0.85;
+}
+ 
+/* =============================================
+   HAMBURGER (preparado para uso futuro)
+   ============================================= */
+.elementoHamburger {
   position: absolute;
-  margin-left:var(--imgElementohamburger_margin_left);
+  left: 25px;
+  display: flex;
+  align-items: center;
 }
-
-.imgElementohamburger{
-  width: var(--imgElementohamburger_width);
-  height: var(--imgElementohamburger_height);
+ 
+.imgElementohamburger {
+  width: 35px;
+  height: 35px;
   cursor: pointer;
 }
+ 
+/* =============================================
+   RESPONSIVIDADE
+   ============================================= */
+@media (max-width: 768px) {
+  .listaNO {
+    justify-content: center;
+    gap: 6px;
+    padding: 0 12px;
+  }
+ 
+  .linkElemento,
+  .linkElementoCTA {
+    font-size: 13px;
+    padding: 7px 12px;
+  }
+}
+ 

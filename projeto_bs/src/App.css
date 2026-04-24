@@ -1,88 +1,163 @@
-:root{
+/* =============================================
+   VARIÁVEIS GLOBAIS
+   ============================================= */
+:root {
   /* CORES */
-  --bg-color-plano-de-fundo: #282c34;
-  --bg-color-painelLateral: #ff0000;
-  
+  --color-bg-primary: #282c34;
+  --color-bg-panel: #1e2128;
+  --color-bg-sidebar: #3a3f4b;
+  --color-accent: #61dafb;
+  --color-text-primary: #ffffff;
+  --color-text-secondary: #abb2bf;
+ 
   /* FONTES */
-  --font-family-principal: 'Arial', sans-serif;
-  --font-family-secundaria: 'Verdana', sans-serif;
-
+  --font-family-primary: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  --font-family-secondary: 'Georgia', serif;
+ 
   /* TAMANHOS DE FONTE */
-  --font-size-pequena: 12px;
-  --font-size-media: 16px;
-  --font-size-grande: 32px;
+  --font-size-xs: 12px;
+  --font-size-sm: 14px;
+  --font-size-md: 16px;
+  --font-size-lg: 24px;
+  --font-size-xl: 32px;
+ 
+  /* ESPAÇAMENTO */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 48px;
+ 
+  /* LAYOUT */
+  --navbar-height: 70px;
+  --sidebar-width: 200px;
 }
-
-.App {
-  text-align: center;
-  font-family: var(--font-family-principal);
+ 
+/* =============================================
+   RESET E BASE
+   ============================================= */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
-
-.appRaiz {
+ 
+body {
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-md);
+  color: var(--color-text-primary);
+  background-color: var(--color-bg-primary);
+}
+ 
+/* =============================================
+   ESTRUTURA PRINCIPAL
+   ============================================= */
+.app-root {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
 }
-
-.App-header {
-  background-color: var(--bg-color-plano-de-fundo);
+ 
+.app-main {
   flex: 1;
   display: flex;
   flex-direction: column;
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
+}
+ 
+.app-layout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+ 
+/* =============================================
+   CONTEÚDO / SECTION
+   ============================================= */
+.app-content {
+  width: 100%;
+  text-align: center;
+  font-family: var(--font-family-primary);
+}
+ 
+/* =============================================
+   PAINEL LATERAL
+   ============================================= */
+.painel-lateral {
+  height: calc(100% - var(--navbar-height));
+  width: var(--sidebar-width);
+  position: fixed;
+  z-index: 100;
+  top: var(--navbar-height);
+  left: 0;
+  background-color: var(--color-bg-sidebar);
+  transition: width 0.3s ease;
+  overflow: hidden;
+}
+ 
+/* =============================================
+   PAINEL SUPERIOR
+   ============================================= */
+.painel-superior {
+  display: flex;
   align-items: center;
   justify-content: flex-start;
-  color: white;
-  padding-bottom: 52px;
+  gap: var(--spacing-md);
 }
-
-/* PAINEL LATERAL */
-.painelLateral{
-  height: calc(100% - 70px);
-  width: 200px;
-  position: fixed;
-  z-index: 1;
-  top: 70px;
-  left: 0;
-  background-color: var(--bg-color-painelLateral);
+ 
+/* =============================================
+   LISTA (navegação / itens)
+   ============================================= */
+.lista-nav {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  gap: var(--spacing-md);
 }
-
-/* TEXTO CENTRAL (fonte principal + grande) */
-.txt_pg_principal{
-  color: #fff;
-  font-family: var(--font-family-principal);
-  font-size: var(--font-size-grande);
+ 
+/* =============================================
+   TEXTO DE PÁGINA PRINCIPAL
+   ============================================= */
+.txt-pg-principal {
+  color: var(--color-text-primary);
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-xl);
   margin-top: 100px;
 }
-
-/*---responsividade---*/
-@media (max-width: 768px){
-  .painelLateral{
+ 
+/* =============================================
+   RESPONSIVIDADE
+   ============================================= */
+@media (max-width: 768px) {
+  .painel-lateral {
     width: 0;
-    overflow: hidden;
   }
-
-  .painelSuperior{
+ 
+  .painel-superior {
     justify-content: center;
   }
-
-  .listaNO{
+ 
+  .lista-nav {
     justify-content: center;
-    gap: 10px;
+    gap: var(--spacing-sm);
   }
-
-  /* texto médio no mobile */
-  .txt_pg_principal{
-    font-size: var(--font-size-media);
+ 
+  .txt-pg-principal {
+    font-size: var(--font-size-md);
   }
 }
-@media (max-width: 480px){
-  .listaNO{
+ 
+@media (max-width: 480px) {
+  .lista-nav {
     flex-direction: column;
-    gap: 5px;
+    gap: var(--spacing-xs);
   }
-
-  /* texto pequeno em telas muito pequenas */
-  .txt_pg_principal{
-    font-size: var(--font-size-pequena);
+ 
+  .txt-pg-principal {
+    font-size: var(--font-size-xs);
   }
 }

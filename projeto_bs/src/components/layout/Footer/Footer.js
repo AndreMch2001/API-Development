@@ -1,5 +1,5 @@
 import style from './Footer.module.css';
-
+ 
 function Footer() {
   return (
     <footer className={style.footer}>
@@ -7,5 +7,6 @@ function Footer() {
     </footer>
   );
 }
-
+ 
 export default Footer;
+ 

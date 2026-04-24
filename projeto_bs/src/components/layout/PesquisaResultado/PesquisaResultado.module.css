@@ -1,0 +1,115 @@
+/* =============================================
+   SEÇÃO DE FILTROS (tipo 1 — PRE_LOGIN)
+   ============================================= */
+.secaoFiltro {
+  width: 25%;
+  height: 90%;
+  background-color: #2a2f3a;
+  border-right: 1px solid #2d323c;
+  padding: 16px;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+ 
+/* =============================================
+   SEÇÃO DE PESQUISA (tipo 2 — POST_LOGIN)
+   ============================================= */
+.secaoPesquisa {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #282c34;
+ 
+  /*
+    Se o PainelLateral (200px) estiver visível,
+    adicione margin-left para não ficar atrás dele.
+    Ajuste conforme o layout da sua página.
+  */
+  padding-left: 200px;
+}
+ 
+/* =============================================
+   WRAPPER DA BARRA — estilo chat
+   ============================================= */
+.inputWrapper {
+  display: flex;
+  align-items: center;
+  background: #1e2128;
+  border: 1px solid #3a3f4b;
+  border-radius: 999px;
+  padding: 6px;
+  width: 100%;
+  max-width: 520px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  transition: border-color 0.2s ease;
+}
+ 
+.inputWrapper:focus-within {
+  border-color: #61dafb;
+}
+ 
+/* =============================================
+   INPUT
+   ============================================= */
+.input {
+  flex: 1;
+  height: 44px;
+  padding: 0 16px;
+  border-radius: 999px;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: #ffffff;
+  font-size: 14px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+ 
+.input::placeholder {
+  color: #5c6370;
+}
+ 
+/* =============================================
+   BOTÃO DE ENVIO
+   ============================================= */
+.button {
+  width: 42px;
+  height: 42px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  border: none;
+  background: #61dafb;
+  color: #14161b;
+  font-size: 15px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s ease, transform 0.1s ease;
+}
+ 
+.button:hover {
+  background: #4fc3e8;
+}
+ 
+.button:active {
+  transform: scale(0.92);
+}
+ 
+/* =============================================
+   RESPONSIVIDADE
+   ============================================= */
+@media (max-width: 768px) {
+  .secaoPesquisa {
+    padding-left: 0;
+    padding: 24px 16px;
+    align-items: flex-start;
+    padding-top: 40px;
+  }
+ 
+  .inputWrapper {
+    max-width: 100%;
+  }
+}
