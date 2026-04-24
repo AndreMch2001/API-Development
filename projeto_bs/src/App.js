@@ -17,8 +17,8 @@ Antes do Login = 1
 Depois do Login = 2
 */
 
-const ValorTipo_Navbar = 0;
-const ValorTipo_PainelLateral = 0;
+const ValorTipo_Navbar = 1;
+const ValorTipo_PainelLateral = 2;
 const ValorTipo_Pesquisa_Resultado = 1;
 
 function App() {
