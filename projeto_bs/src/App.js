@@ -31,7 +31,7 @@ function App() {
               <Container>
  
                 <PainelLateral tipo={LAYOUT_TYPE.POST_LOGIN} nomeUsuario="Usuário" />
-                <PesquisaResultado tipo={LAYOUT_TYPE.POST_LOGIN} />
+                <PesquisaResultado tipo={LAYOUT_TYPE.PRE_LOGIN} />
  
                 <Routes>
                   <Route path="/"         element={<Navigate to="/login" replace />} />

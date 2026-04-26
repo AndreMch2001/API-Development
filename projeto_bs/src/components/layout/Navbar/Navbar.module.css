@@ -17,7 +17,7 @@
 .painelSuperior {
   height: var(--navbar-height);
   width: 100%;
-  position: fixed;
+  
   z-index: 200;
   top: 0;
   left: 0;
