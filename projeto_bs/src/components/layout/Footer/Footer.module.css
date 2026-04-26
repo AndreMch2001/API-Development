@@ -1,0 +1,29 @@
+.footer {
+  /* 
+    Trocado de position: fixed para sticky dentro do flex da app-root.
+    Com fixed, o footer fica flutuando sobre o conteúdo e não empurra
+    o layout — os outros componentes ficavam "escondidos" atrás dele.
+    O App.css já tem .app-root com flex-direction: column,
+    então o footer vai naturalmente para o fim da página.
+  */
+  position: sticky;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 30;
+  width: 100%;
+  flex-shrink: 0;
+  padding: 14px 20px;
+  padding-left: max(20px, env(safe-area-inset-left));
+  padding-right: max(20px, env(safe-area-inset-right));
+  padding-bottom: max(14px, env(safe-area-inset-bottom));
+  text-align: center;
+  background: #14161b;
+  border-top: 1px solid #2d323c;
+  color: #8b919d;
+  font-size: 13px;
+}
+ 
+.texto {
+  margin: 0;
+}

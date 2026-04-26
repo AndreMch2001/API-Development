@@ -1,5 +1,11 @@
+import style from './LoginPage.module.css';
+
 function LoginPage(){
-    return <h1>Pagina de Login</h1>
+    return(
+        <section className={style.sectionFormulario}>
+            
+        </section>
+    );
 }
 
 export default LoginPage
