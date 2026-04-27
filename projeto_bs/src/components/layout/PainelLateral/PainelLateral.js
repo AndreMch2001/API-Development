@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { LAYOUT_TYPE } from '../../../constants/layoutTypes.js';
  
 const navLinks = [
-  { id: 1, label: 'Link 1', to: '/link1' },
+  { id: 1, label: 'Link 1', to: 'https://chatgpt.com/' },
   { id: 2, label: 'Link 2', to: '/link2' },
   { id: 3, label: 'Link 3', to: '/link3' },
   { id: 4, label: 'Link 4', to: '/link4' },
