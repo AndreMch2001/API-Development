@@ -1,5 +1,4 @@
 import style from './PainelLateral.module.css';
-<<<<<<< HEAD
 import { Link } from 'react-router-dom';
 import { LAYOUT_TYPE } from '../../../constants/layoutTypes.js';
  
@@ -44,27 +43,6 @@ function PainelLateral({ tipo, nomeUsuario = 'Usuário' }) {
  
     </aside>
   );
-=======
-
-function PainelLateral({ tipo }) {
-    return (
-        <>
-            {tipo === 0 && (
-                <></>
-            )}
-            {tipo === 1 &&(
-               <></>
-            )}
-            {tipo === 2 && (
-                <section
-                className={style.painelLateral}
-                id="painelLateral">
-                {/*conteudo do painel lateral*/}
-                </section>
-            )}
-        </>
-    );  
->>>>>>> 3ead235051fad828e00ad9b75da0ddab6634f588
 }
 
 export default PainelLateral;
