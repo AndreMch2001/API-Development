@@ -8,7 +8,8 @@ import UsuarioPage    from './components/pages/Usuario/UsuarioPage.js';
 import Container         from './components/layout/Container/Container.js';
 import Navbar            from './components/layout/Navbar/Navbar.js';
 import PainelLateral     from './components/layout/PainelLateral/PainelLateral.js';
-import PesquisaResultado from './components/layout/PesquisaResultado/PesquisaResultado.js';
+import PesquisaResultado from './components/layout/PesquisaFIltro_IA/PesquisaFIltro_IA.js';
+import ResultadosPesquisa from './components/layout/ResultadosPesquisa/Resultados_Pesquisa.js'
 import Footer            from './components/layout/Footer/Footer.js';
 import PrivateRoute      from './components/layout/PrivateRoute/PrivateRoute.js';
  
@@ -32,19 +33,13 @@ function App() {
  
                 <PainelLateral tipo={LAYOUT_TYPE.POST_LOGIN} nomeUsuario="Usuário" />
                 <PesquisaResultado tipo={LAYOUT_TYPE.PRE_LOGIN} />
+                <ResultadosPesquisa tipo={LAYOUT_TYPE.PRE_LOGIN} />
  
                 <Routes>
                   <Route path="/"         element={<Navigate to="/login" replace />} />
                   <Route path="/cadastro" element={<CadastroPage />} />
                   <Route path="/login"    element={<LoginPage />} />
-                  <Route
-                    path="/usuario"
-                    element={
-                      <PrivateRoute>
-                        <UsuarioPage />
-                      </PrivateRoute>
-                    }
-                  />
+                  <Route path="/usuario"  element={<PrivateRoute><UsuarioPage /></PrivateRoute>}/>
                 </Routes>
  
               </Container>

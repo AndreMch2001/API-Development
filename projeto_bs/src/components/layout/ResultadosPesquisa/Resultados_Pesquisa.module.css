@@ -1,0 +1,9 @@
+:root{
+    --bg-color_secaoResultado: aqua;
+}
+
+.secaoResultado{
+    width: 50px;
+    height: 50px;
+    background-color: aliceblue
+};

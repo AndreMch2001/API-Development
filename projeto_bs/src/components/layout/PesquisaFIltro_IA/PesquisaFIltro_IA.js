@@ -1,7 +1,7 @@
-import style from './PesquisaResultado.module.css';
+import style from './PesquisaFIltro_IA.module.css';
 import { LAYOUT_TYPE } from '../../../constants/layoutTypes.js';
 
-function InputFiltro({label, id, type = "text", name, className, placeholder}) {
+function InputFiltro({ label, id, type = "text", name, className, placeholder }) {
   return (
     <div className='div_InputFiltro'>
       <label htmlFor={id}>{label}</label>
@@ -60,6 +60,13 @@ function PesquisaResultado({ tipo, onPesquisar }) {
               className={style.secaoFiltro_Input}
               placeholder="Ex: SC"
             />
+
+            <button
+              className={style.button}
+              aria-label="Pesquisar"
+              onClick={onPesquisar}>
+              ➤
+            </button>
           </form>
         </section>
       )}
