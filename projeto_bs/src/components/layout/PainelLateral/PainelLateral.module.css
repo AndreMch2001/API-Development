@@ -1,31 +1,124 @@
-:root{
-      /* CORES */
-    --bg-color-plano-de-fundo: #282c34;
-    --bg-color-painelLateral: #ff0000;
-
-      /* FONTES */
-    --font-family-principal: 'Arial', sans-serif;
-    --font-family-secundaria: 'Verdana', sans-serif;
-
-      /* TAMANHOS DE FONTE */
-    --font-size-pequena: 12px;
-    --font-size-media: 16px;
-    --font-size-grande: 32px;
-
-      /*medidas dos elementos*/
-    --painelLateral_height: 100%;
-    --painelSuperior_height: 11%;
-    --painelLateral_width: 100%;
-    --imgElementohamburger_margin_left:25px;
-}
-/*calc(var(--painelLateral_height) - var(--painelSuperior_height))*/
-/* PAINEL LATERAL */
-.painelLateral{
-  height: calc(var(--painelLateral_height) - var(--painelSuperior_height));
+/* =============================================
+   PAINEL LATERAL
+   ============================================= */
+.painelLateral {
   width: 200px;
+  height: calc(100vh - var(--navbar-height, 60px));
   position: fixed;
-  z-index: 1;
-  top: 70px;
+  z-index: 100;
+  top: var(--navbar-height, 60px);
   left: 0;
-  background-color: var(--bg-color-painelLateral);
+  background-color: #1e2128;
+  border-right: 1px solid #2d323c;
+ 
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+ 
+  overflow: hidden;
+}
+ 
+/* =============================================
+   NAVEGAÇÃO / LINKS
+   ============================================= */
+.navLinks {
+  flex: 1;
+  padding: 16px 0;
+  overflow-y: auto;
+}
+ 
+.lista {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+ 
+.item {
+  width: 100%;
+}
+ 
+.link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 10px 20px;
+  color: #abb2bf;
+  text-decoration: none;
+  font-size: 14px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  transition: background 0.15s ease, color 0.15s ease;
+  border-left: 3px solid transparent;
+}
+ 
+.link:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: #ffffff;
+  border-left-color: #61dafb;
+}
+ 
+.linkIcone {
+  font-size: 8px;
+  color: #4b5263;
+  flex-shrink: 0;
+}
+ 
+.link:hover .linkIcone {
+  color: #61dafb;
+}
+ 
+/* =============================================
+   RODAPÉ — USUÁRIO
+   ============================================= */
+.rodape {
+  flex-shrink: 0;
+  padding: 12px 16px;
+}
+ 
+.divisor {
+  height: 1px;
+  background: #2d323c;
+  margin-bottom: 12px;
+}
+ 
+.usuario {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+ 
+/* Avatar com inicial do nome */
+.avatar {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: #3a3f4b;
+  border: 1px solid #4b5263;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 600;
+  color: #61dafb;
+  flex-shrink: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+ 
+.nomeUsuario {
+  font-size: 13px;
+  color: #abb2bf;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+ 
+/* =============================================
+   RESPONSIVIDADE
+   ============================================= */
+@media (max-width: 768px) {
+  .painelLateral {
+    width: 0;
+    border-right: none;
+  }
 }

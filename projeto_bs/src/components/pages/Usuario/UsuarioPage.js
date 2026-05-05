@@ -1,5 +1,5 @@
 function UsuarioPage(){
-    return <h1>Pagina de usuario</h1>
+    return <></>
 }
 
 export default UsuarioPage
