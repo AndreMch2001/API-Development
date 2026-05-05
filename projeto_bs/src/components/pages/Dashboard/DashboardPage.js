@@ -1,5 +1,5 @@
 function Dashboard(){
-    return <h1>Pagina de Login</h1>
+    return <></>
 }
 
 export default Dashboard
