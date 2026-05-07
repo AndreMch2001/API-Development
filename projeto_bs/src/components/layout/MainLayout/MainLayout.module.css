@@ -1,0 +1,60 @@
+.layout {
+  display: grid;
+
+  grid-template-areas:
+    "navbar navbar"
+    "sidebar content"
+    "footer footer";
+
+  grid-template-columns: 240px 1fr;
+  grid-template-rows: 70px 1fr 60px;
+
+  min-height: 100vh;
+
+  background: #16181d;
+}
+
+/* ======================
+   ÁREAS
+====================== */
+
+.navbar {
+  grid-area: navbar;
+  border-bottom: 1px solid #2d323c;
+}
+
+.sidebar {
+  grid-area: sidebar;
+  background: #1e2128;
+  border-right: 1px solid #2d323c;
+}
+
+.content {
+  grid-area: content;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.footer {
+  grid-area: footer;
+  border-top: 1px solid #2d323c;
+}
+
+/* ======================
+   RESPONSIVO
+====================== */
+
+@media (max-width: 768px) {
+  .layout {
+    grid-template-areas:
+      "navbar"
+      "content"
+      "footer";
+
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar {
+    display: none;
+  }
+}

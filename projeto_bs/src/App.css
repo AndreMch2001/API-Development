@@ -1,166 +1,117 @@
-/* =============================================
-   VARIÁVEIS GLOBAIS
-   ============================================= */
-:root {
-  /* CORES */
-  --color-bg-primary: #282c34;
-  --color-bg-panel: #1e2128;
-  --color-bg-sidebar: #3a3f4b;
-  --color-accent: #61dafb;
-  --color-text-primary: #ffffff;
-  --color-text-secondary: #abb2bf;
- 
-  /* FONTES */
-  --font-family-primary: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  --font-family-secondary: 'Georgia', serif;
- 
-  /* TAMANHOS DE FONTE */
-  --font-size-xs: 12px;
-  --font-size-sm: 14px;
-  --font-size-md: 16px;
-  --font-size-lg: 24px;
-  --font-size-xl: 32px;
- 
-  /* ESPAÇAMENTO */
-  --spacing-xs: 4px;
-  --spacing-sm: 8px;
-  --spacing-md: 16px;
-  --spacing-lg: 24px;
-  --spacing-xl: 48px;
- 
-  /* LAYOUT */
-  --navbar-height: 70px;
-  --sidebar-width: 200px;
-}
- 
-/* =============================================
-   RESET E BASE
-   ============================================= */
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
+/* =========================================
+   RESET
+========================================= */
+
+* {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
- 
-body {
-  font-family: var(--font-family-primary);
-  font-size: var(--font-size-md);
-  color: var(--color-text-primary);
-  background-color: var(--color-bg-primary);
-}
- 
-/* =============================================
-   ESTRUTURA PRINCIPAL
-   ============================================= */
-.app-root {
+
+/* =========================================
+   BODY
+========================================= */
+
+html,
+body,
+#root {
+  width: 100%;
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+
+  background: #282c34;
+
+  overflow-x: hidden;
+
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
- 
-.app-main {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  background-color: var(--color-bg-primary);
-  color: var(--color-text-primary);
-}
- 
+
+/* =========================================
+   GRID PRINCIPAL
+========================================= */
+
 .app-layout {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
+
+  min-height: 100vh;
+
+  display: grid;
+
+  grid-template-columns: 220px 1fr;
+
+  grid-template-rows: 60px 1fr 50px;
+
+  grid-template-areas:
+    "navbar navbar"
+    "sidebar content"
+    "footer footer";
 }
- 
-/* =============================================
-   CONTEÚDO / SECTION
-   ============================================= */
-.app-content {
-  width: 100%;
-  text-align: center;
-  font-family: var(--font-family-primary);
-}
- 
-/* =============================================
-   PAINEL LATERAL
-   ============================================= */
-.painel-lateral {
-  height: calc(100% - var(--navbar-height));
-  width: var(--sidebar-width);
-  position: fixed;
+
+/* =========================================
+   NAVBAR
+========================================= */
+
+.navbar-area {
+  grid-area: navbar;
+
   z-index: 100;
-  top: var(--navbar-height);
-  left: 0;
-  background-color: var(--color-bg-sidebar);
-  transition: width 0.3s ease;
+}
+
+/* =========================================
+   SIDEBAR
+========================================= */
+
+.sidebar-area {
+  grid-area: sidebar;
+
+  background: #1e2128;
+
+  border-right: 1px solid #2d323c;
+
   overflow: hidden;
 }
- 
-/* =============================================
-   PAINEL SUPERIOR
-   ============================================= */
-.painel-superior {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  gap: var(--spacing-md);
+
+/* =========================================
+   CONTEÚDO
+========================================= */
+
+.content-area {
+
+  grid-area: content;
+
+  padding: 24px;
+
+  overflow-y: auto;
+
+  min-width: 0;
 }
- 
-/* =============================================
-   LISTA (navegação / itens)
-   ============================================= */
-.lista-nav {
-  display: flex;
-  align-items: center;
-  list-style: none;
-  gap: var(--spacing-md);
+
+/* =========================================
+   FOOTER
+========================================= */
+
+.footer-area {
+  grid-area: footer;
 }
- 
-/* =============================================
-   TEXTO DE PÁGINA PRINCIPAL
-   ============================================= */
-.txt-pg-principal {
-  color: var(--color-text-primary);
-  font-family: var(--font-family-primary);
-  font-size: var(--font-size-xl);
-  margin-top: 100px;
-}
- 
-/* =============================================
-   RESPONSIVIDADE
-   ============================================= */
+
+/* =========================================
+   RESPONSIVO
+========================================= */
+
 @media (max-width: 768px) {
-  .painel-lateral {
-    width: 0;
 
-  }
- 
-  .painel-superior {
-    justify-content: center;
-  }
- 
-  .lista-nav {
-    justify-content: center;
-    gap: var(--spacing-sm);
-  }
- 
-  .txt-pg-principal {
-    font-size: var(--font-size-md);
+  .app-layout {
 
-  }
-}
- 
-@media (max-width: 480px) {
-  .lista-nav {
-    flex-direction: column;
-    gap: var(--spacing-xs);
-  }
- 
-  .txt-pg-principal {
-    font-size: var(--font-size-xs);
+    grid-template-columns: 1fr;
 
+    grid-template-rows:
+      60px
+      auto
+      1fr
+      50px;
+
+    grid-template-areas:
+      "navbar"
+      "sidebar"
+      "content"
+      "footer";
   }
 }

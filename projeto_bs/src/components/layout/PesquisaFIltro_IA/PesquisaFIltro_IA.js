@@ -3,7 +3,7 @@ import { LAYOUT_TYPE } from '../../../constants/layoutTypes.js';
 
 function InputFiltro({ label, id, type = "text", name, className, placeholder }) {
   return (
-    <div className='div_InputFiltro'>
+    <div className={style.div_InputFiltro}>
       <label htmlFor={id}>{label}</label>
       <input type={type} id={id} name={name} className={className} placeholder={placeholder} aria-label={label}
       />

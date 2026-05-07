@@ -1,133 +1,221 @@
 /* =============================================
-   VARIÁVEIS LOCAIS DA NAVBAR
-   (as de fonte/cor vêm do App.css via :root)
-   ============================================= */
+   VARIÁVEIS
+============================================= */
+
 :root {
   --navbar-bg: #14161b;
+
   --navbar-height: 60px;
+
   --navbar-link-color: #ffffff;
   --navbar-link-hover: #61dafb;
+
   --navbar-cta-bg: #61dafb;
   --navbar-cta-color: #14161b;
-
-
-
-
-
-
-
-
-
-
-
 }
- 
+
 /* =============================================
-   PAINEL SUPERIOR (navbar fixa)
-   ============================================= */
+   NAVBAR
+============================================= */
+
 .painelSuperior {
-  height: var(--navbar-height);
   width: 100%;
-  position: fixed;
-  z-index: 200;
-  top: 0;
-  left: 0;
+  height: var(--navbar-height);
+
   background-color: var(--navbar-bg);
+
   border-bottom: 1px solid #2d323c;
+
   display: flex;
   align-items: center;
+  justify-content: flex-end;
+
+  position: relative;
 }
- 
+
 /* =============================================
-   LISTA DE NAVEGAÇÃO
-   ============================================= */
-.listaNO {
+   ÁREA CENTRAL - LOGO
+============================================= */
+
+.areaLogo {
+  position: absolute;
+
+  left: 50%;
+  transform: translateX(-50%);
+
+  height: 100%;
+
   display: flex;
-  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.boxLogo {
+  width: 60px;
+  height: 60px;
+
+  border-left: 1px solid #2d323c;
+  border-right: 1px solid #2d323c;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: white;
+
+  background: #1b1e25;
+}
+
+/* =============================================
+   ÁREA HAMBURGER - DIREITA
+============================================= */
+
+.areaHamburger {
+  position: absolute;
+
+  left: 0;
+  top: 0;
+
+  height: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.boxHamburger {
+  width: 60px;
+  height: 60px;
+
+  border-left: 1px solid #2d323c;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: white;
+
+  font-size: 22px;
+  cursor: pointer;
+
+  transition: 0.2s ease;
+}
+
+.boxHamburger:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: #61dafb;
+}
+
+/* =============================================
+   LISTA
+============================================= */
+
+.listaNO {
+  width: 100%;
+
+  display: flex;
   justify-content: flex-end;
   align-items: center;
+
   list-style: none;
+
   margin: 0;
-  padding: 0 24px;
+  padding: 0 80px 0 24px;
+
   gap: 8px;
-  width: 100%;
 }
- 
+
 /* =============================================
-   ITENS
-   ============================================= */
+   ITEM
+============================================= */
+
 .elementoLista {
   padding: 0;
 }
- 
+
 /* =============================================
    LINK PADRÃO
-   ============================================= */
+============================================= */
+
 .linkElemento {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
   color: var(--navbar-link-color);
+
   text-decoration: none;
+
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-size: 14px;
+
   padding: 8px 16px;
+
   border-radius: 6px;
+
   transition: background 0.2s ease, color 0.2s ease;
 }
- 
+
 .linkElemento:hover {
   background: rgba(255, 255, 255, 0.08);
   color: var(--navbar-link-hover);
 }
- 
+
 /* =============================================
-   LINK CTA (botão de destaque — Cadastrar)
-   ============================================= */
+   CTA
+============================================= */
+
 .linkElementoCTA {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
   color: var(--navbar-cta-color);
+
   text-decoration: none;
+
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
   font-size: 14px;
   font-weight: 600;
+
   padding: 8px 16px;
+
   border-radius: 6px;
+
   background: var(--navbar-cta-bg);
+
   transition: opacity 0.2s ease;
 }
- 
+
 .linkElementoCTA:hover {
   opacity: 0.85;
 }
- 
+
 /* =============================================
-   HAMBURGER (preparado para uso futuro)
-   ============================================= */
-.elementoHamburger {
-  position: absolute;
-  left: 25px;
-  display: flex;
-  align-items: center;
-}
- 
-.imgElementohamburger {
-  width: 35px;
-  height: 35px;
-  cursor: pointer;
-}
- 
-/* =============================================
-   RESPONSIVIDADE
-   ============================================= */
+   RESPONSIVO
+============================================= */
+
 @media (max-width: 768px) {
+
   .listaNO {
     justify-content: center;
+
     gap: 6px;
-    padding: 0 12px;
+
+    padding: 0 70px 0 12px;
   }
- 
+
   .linkElemento,
   .linkElementoCTA {
     font-size: 13px;
     padding: 7px 12px;
   }
+
+  .boxLogo,
+  .boxHamburger {
+    width: 55px;
+    height: 55px;
+  }
+
 }
