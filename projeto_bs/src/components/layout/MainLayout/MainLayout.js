@@ -7,7 +7,7 @@ import Footer from '../Footer/Footer';
 function MainLayout({ children }) {
   return (
     <div className={style.layout}>
-      
+
       <header className={style.navbar}>
         <Navbar />
       </header>

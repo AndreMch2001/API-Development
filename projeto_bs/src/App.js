@@ -12,8 +12,6 @@ import LoginPage from './components/pages/Login/LoginPage.js';
 import UsuarioPage from './components/pages/Usuario/UsuarioPage.js';
 import PesquisarPage from './components/pages/Pesquisar/Pesquisar.Page.js';
 
-import Container from './components/layout/Container/Container.js';
-
 import Navbar from './components/layout/Navbar/Navbar.js';
 import PainelLateral from './components/layout/PainelLateral/PainelLateral.js';
 import Footer from './components/layout/Footer/Footer.js';
@@ -34,66 +32,57 @@ function App() {
       <div className="app-layout">
 
         {/* NAVBAR */}
-
         <header className="navbar-area">
           <Navbar tipo={LAYOUT_TYPE.POST_LOGIN} />
         </header>
 
-        {/* SIDEBAR */}
-
+        {/* SIDEBAR ESQUERDA */}
         <aside className="sidebar-area">
           <PainelLateral
             tipo={LAYOUT_TYPE.POST_LOGIN}
             nomeUsuario="Usuário"
           />
         </aside>
-        
 
         {/* CONTEÚDO */}
-
         <main className="content-area">
 
-          <Container>
+          <Routes>
 
-            <Routes>
+            <Route
+              path="/"
+              element={<Navigate to="/login" replace />}
+            />
 
-              <Route
-                path="/"
-                element={<Navigate to="/login" replace />}
-              />
+            <Route
+              path="/cadastro"
+              element={<CadastroPage />}
+            />
 
-              <Route
-                path="/cadastro"
-                element={<CadastroPage />}
-              />
+            <Route
+              path="/login"
+              element={<LoginPage />}
+            />
 
-              <Route
-                path="/login"
-                element={<LoginPage />}
-              />
+            <Route
+              path="/usuario"
+              element={
+                <PrivateRoute>
+                  <UsuarioPage />
+                </PrivateRoute>
+              }
+            />
 
-              <Route
-                path="/usuario"
-                element={
-                  <PrivateRoute>
-                    <UsuarioPage />
-                  </PrivateRoute>
-                }
-              />
+            <Route
+              path="/pesquisa"
+              element={<PesquisarPage />}
+            />
 
-              <Route
-                path="/pesquisa"
-                element={<PesquisarPage />}
-              />
-
-            </Routes>
-
-          </Container>
+          </Routes>
 
         </main>
 
         {/* FOOTER */}
-
         <footer className="footer-area">
           <Footer />
         </footer>

@@ -1,28 +1,21 @@
-:root {
-    --bg-color_secaoResultado: #1e2128;
-}
-
 .secaoResultado {
-    width: 100%;
+  width: 100%;
+  min-height: 100%;
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
 
-    padding: 40px 0;
+  padding: 20px;
 }
 
 .cardResultado {
-    width: 100%;
-    max-width: 700px;
-    min-height: 200px;
+  width: 100%;
 
-    background-color: var(--bg-color_secaoResultado);
+  background: #1e2128;
+  border: 1px solid #2d323c;
+  border-radius: 12px;
 
-    border: 1px solid #2d323c;
-    border-radius: 12px;
+  padding: 24px;
 
-    padding: 24px;
-
-    color: white;
+  color: #fff;
 }
