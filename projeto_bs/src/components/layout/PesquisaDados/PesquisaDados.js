@@ -1,4 +1,4 @@
-import style from './PesquisaFIltro_IA.module.css';
+import style from './PesquisaDados.module.css';
 import { LAYOUT_TYPE } from '../../../constants/layoutTypes.js';
 
 function InputFiltro({ label, id, type = "text", name, className, placeholder }) {

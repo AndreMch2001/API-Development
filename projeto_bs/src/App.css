@@ -30,19 +30,17 @@ body,
 ========================================= */
 
 .app-layout {
-
   min-height: 100vh;
-
   display: grid;
 
-  grid-template-columns: 220px 1fr;
-
+  
+  grid-template-columns: 220px 1fr 280px;
   grid-template-rows: 60px 1fr 50px;
 
   grid-template-areas:
-    "navbar navbar"
-    "sidebar content"
-    "footer footer";
+    "navbar  navbar  navbar"
+    "sidebar content rightbar"
+    "footer  footer  footer";
 }
 
 /* =========================================
@@ -67,6 +65,22 @@ body,
   border-right: 1px solid #2d323c;
 
   overflow: hidden;
+}
+/* =========================================
+   rightbar
+========================================= */
+
+.rightbar-area {
+  grid-area: rightbar;
+
+  width: auto;
+  height: auto;
+
+  background: #1e2128;
+  border-left: 1px solid #2d323c;
+
+  overflow-y: auto;
+  padding: 10px;
 }
 
 /* =========================================

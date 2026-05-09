@@ -2,7 +2,7 @@ import style from './Resultados_Pesquisa.module.css';
 
 import MainLayout from '../MainLayout/MainLayout';
 
-import pesquisaFiltro_IA from '../PesquisaFIltro_IA/PesquisaFIltro_IA';
+import pesquisaFiltro_IA from '../PesquisaDados/PesquisaDados.js';
 
 import { LAYOUT_TYPE } from '../../../constants/layoutTypes.js';
 

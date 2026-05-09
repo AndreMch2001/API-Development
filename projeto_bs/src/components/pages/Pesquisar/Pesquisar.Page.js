@@ -1,5 +1,5 @@
 import style from './Pesquisar.Page.module.css';
-import PesquisaResultado from '../../layout/PesquisaFIltro_IA/PesquisaFIltro_IA';
+import PesquisaResultado from '../../layout/PesquisaDados/PesquisaDados';
 import ResultadosPesquisa from '../../layout/ResultadosPesquisa/Resultados_Pesquisa';
 import { LAYOUT_TYPE } from '../../../constants/layoutTypes';
 

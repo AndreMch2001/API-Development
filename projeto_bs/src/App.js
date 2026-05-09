@@ -14,6 +14,7 @@ import PesquisarPage from './components/pages/Pesquisar/Pesquisar.Page.js';
 
 import Navbar from './components/layout/Navbar/Navbar.js';
 import PainelLateral from './components/layout/PainelLateral/PainelLateral.js';
+import PesquisaDados from './components/layout/PesquisaDados/PesquisaDados.js';
 import Footer from './components/layout/Footer/Footer.js';
 
 import PrivateRoute from './components/layout/PrivateRoute/PrivateRoute.js';
@@ -35,7 +36,14 @@ function App() {
         <header className="navbar-area">
           <Navbar tipo={LAYOUT_TYPE.POST_LOGIN} />
         </header>
-
+        
+        {/*Painel de filtros*/}
+        <aside className="rightbar-area">
+          <PesquisaDados
+            tipo={LAYOUT_TYPE.PRE_LOGIN}
+          />
+        </aside>
+        
         {/* SIDEBAR ESQUERDA */}
         <aside className="sidebar-area">
           <PainelLateral
@@ -46,7 +54,6 @@ function App() {
 
         {/* CONTEÚDO */}
         <main className="content-area">
-
           <Routes>
 
             <Route
@@ -79,7 +86,6 @@ function App() {
             />
 
           </Routes>
-
         </main>
 
         {/* FOOTER */}
