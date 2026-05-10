@@ -15,6 +15,7 @@ import PesquisarPage from './components/pages/Pesquisar/Pesquisar.Page.js';
 import Navbar from './components/layout/Navbar/Navbar.js';
 import PainelLateral from './components/layout/PainelLateral/PainelLateral.js';
 import PesquisaDados from './components/layout/PesquisaDados/PesquisaDados.js';
+import ResultadosPesquisa from './components/layout/ResultadosPesquisa/Resultados_Pesquisa.js';
 import Footer from './components/layout/Footer/Footer.js';
 
 import PrivateRoute from './components/layout/PrivateRoute/PrivateRoute.js';
@@ -32,6 +33,12 @@ function App() {
 
       <div className="app-layout">
 
+        <content className="content_area">
+          <ResultadosPesquisa
+            tipo={LAYOUT_TYPE.PRE_LOGIN}
+          />
+        </content>
+
         {/* NAVBAR */}
         <header className="navbar-area">
           <Navbar tipo={LAYOUT_TYPE.POST_LOGIN} />
@@ -43,6 +50,7 @@ function App() {
             tipo={LAYOUT_TYPE.PRE_LOGIN}
           />
         </aside>
+
         
         {/* SIDEBAR ESQUERDA */}
         <aside className="sidebar-area">

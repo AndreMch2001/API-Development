@@ -1,0 +1,22 @@
+.cardResultado {
+  width: auto;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 10px;
+  background: #1e2128;
+  border: 1px solid #3c2d2d;
+  border-radius: 12px;
+  padding: 24px;
+  color: #fff;
+}
+
+h3 {
+  font-size: 22px;
+  font-weight: 600;
+}
+p {
+  font-size: 18px;
+  font-weight: 400;
+}

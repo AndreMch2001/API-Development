@@ -1,21 +1,43 @@
-.secaoResultado {
-  width: 100%;
-  min-height: 100%;
+:root{
+  /*bgcolors*/
+  --bg-color-secaoResultado: transparent;
+  --bg-color-secaoResultado_Titulo: transparent;
+  --bg-color-secaoResultado_Texto: transparent;
+  /*Textos*/
+  --font-size-title: 32px;
+  --font-size-text: 20px;
+  --color-title: #fff;
+  --color-text: #b7bcc7;
 
+}.secaoResultado {
+  width: 100%;
+  height: 100%;
+  background-color: var(--bg-color-secaoResultado);
   display: flex;
   flex-direction: column;
 
   padding: 20px;
 }
-
-.cardResultado {
-  width: 100%;
-
-  background: #1e2128;
-  border: 1px solid #2d323c;
-  border-radius: 12px;
-
-  padding: 24px;
-
-  color: #fff;
+.secaoResultado_Titulo{
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--bg-color-secaoResultado_Titulo);
+  font-size: 32px;
+  font-weight: 700;
 }
+
+.secaoResultado_Texto{
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--bg-color-secaoResultado_Texto);
+  font-size: 20px;
+  font-weight: 400;
+}
+
+
