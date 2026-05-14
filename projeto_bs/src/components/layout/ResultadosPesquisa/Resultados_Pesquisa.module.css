@@ -1,43 +1,124 @@
-:root{
-  /*bgcolors*/
+:root {
+  /* Backgrounds */
   --bg-color-secaoResultado: transparent;
   --bg-color-secaoResultado_Titulo: transparent;
   --bg-color-secaoResultado_Texto: transparent;
-  /*Textos*/
-  --font-size-title: 32px;
-  --font-size-text: 20px;
-  --color-title: #fff;
-  --color-text: #b7bcc7;
 
-}.secaoResultado {
+  /* Textos */
+  --font-size-title: 30px;
+  --font-size-text: 18px;
+
+  --color-title: #ffffff;
+  --color-text: #b7bcc7;
+}
+
+/* Área principal */
+.secaoResultado {
   width: 100%;
-  height: 100%;
-  background-color: var(--bg-color-secaoResultado);
+  height: 100vh;
+
   display: flex;
   flex-direction: column;
 
-  padding: 20px;
+  overflow-y: auto;
+
+  padding: 24px;
+
+  background-color: var(--bg-color-secaoResultado);
+
+  scrollbar-width: thin;
 }
-.secaoResultado_Titulo{
+
+/* Header */
+.headerResultado {
+  display: flex;
+  flex-direction: column;
+
+  gap: 10px;
+
+  margin-bottom: 24px;
+
+  flex-shrink: 0;
+}
+
+/* Título */
+.secaoResultado_Titulo {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  text-align: center;
+
   display: flex;
   justify-content: center;
   align-items: center;
+
+  text-align: center;
+
   background-color: var(--bg-color-secaoResultado_Titulo);
-  font-size: 32px;
+
+  font-size: var(--font-size-title);
   font-weight: 700;
+
+  color: var(--color-title);
+
+  margin: 0;
 }
 
-.secaoResultado_Texto{
+/* Texto */
+.secaoResultado_Texto {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  text-align: center;
+
   display: flex;
   justify-content: center;
   align-items: center;
+
+  text-align: center;
+
   background-color: var(--bg-color-secaoResultado_Texto);
-  font-size: 20px;
+
+  font-size: var(--font-size-text);
   font-weight: 400;
+
+  color: var(--color-text);
+
+  margin: 0;
 }
 
+/* Área dos cards */
+.cardResultadoArea {
+  width: 100%;
 
+  display: flex;
+  flex-direction: column;
+
+  gap: 20px;
+
+  padding-bottom: 30px;
+}
+
+/* Scroll personalizado */
+.secaoResultado::-webkit-scrollbar {
+  width: 8px;
+}
+
+.secaoResultado::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.secaoResultado::-webkit-scrollbar-thumb {
+  background: #3a4254;
+
+  border-radius: 20px;
+}
+
+/* Responsividade */
+@media (max-width: 900px) {
+  .secaoResultado {
+    padding: 16px;
+  }
+
+  .secaoResultado_Titulo {
+    font-size: 24px;
+  }
+
+  .secaoResultado_Texto {
+    font-size: 16px;
+  }
+}

@@ -6,15 +6,79 @@ import { LAYOUT_TYPE } from '../../../constants/layoutTypes.js';
 
 function PrintResultados() {
     return (
-        <div className={styleCard.cardResultado}>
-            <h3 className={styleCard.cardResultado_Titulo}>Nome do Favorecido:<p className={styleCard.cardResultado_Texto}>Maria da Silva</p></h3>
-            <h3 className={styleCard.cardResultado_Titulo}>NIS:<p className={styleCard.cardResultado_Texto}>123456789</p></h3>
-            <h3 className={styleCard.cardResultado_Titulo}>Mês de Referência:<p className={styleCard.cardResultado_Texto}>Janeiro</p></h3>
-            <h3 className={styleCard.cardResultado_Titulo}>Valor do Benefício:<p className={styleCard.cardResultado_Texto}>R$ 500,00</p></h3>
-        </div>
+        <section className={styleCard.cardResultado}>
+            <div className={styleCard.ID}>
+                <h3 className={styleCard.cardResultado_Titulo}>
+                    ID:
+                    <p className={styleCard.cardResultado_Texto}>1</p>
+                </h3>
+            </div>
+
+            <div className={styleCard.NomeFavorecido}>
+                <h3 className={styleCard.cardResultado_Titulo}>
+                    Nome do Favorecido:
+                    <p className={styleCard.cardResultado_Texto}>Maria da Silva</p>
+                </h3>
+            </div>
+
+            <div className={styleCard.CPF}>
+                <h3 className={styleCard.cardResultado_Titulo}>
+                    CPF do Favorecido:
+                    <p className={styleCard.cardResultado_Texto}>000.000.000-00</p>
+                </h3>
+            </div>
+
+            <div className={styleCard.NIS}>
+                <h3 className={styleCard.cardResultado_Titulo}>
+                    NIS do Favorecido:
+                    <p className={styleCard.cardResultado_Texto}>123456789</p>
+                </h3>
+            </div>
+
+            <div className={styleCard.Municipio}>
+                <h3 className={styleCard.cardResultado_Titulo}>
+                    Nome do Município:
+                    <p className={styleCard.cardResultado_Texto}>São Paulo</p>
+                </h3>
+            </div>
+
+            <div className={styleCard.CodigoMunicipio}>
+                <h3 className={styleCard.cardResultado_Titulo}>
+                    Código Município SIAFI:
+                    <p className={styleCard.cardResultado_Texto}>7107</p>
+                </h3>
+            </div>
+
+            <div className={styleCard.UF}>
+                <h3 className={styleCard.cardResultado_Titulo}>
+                    UF:
+                    <p className={styleCard.cardResultado_Texto}>SP</p>
+                </h3>
+            </div>
+
+            <div className={styleCard.MesReferencia}>
+                <h3 className={styleCard.cardResultado_Titulo}>
+                    Mês de Referência:
+                    <p className={styleCard.cardResultado_Texto}>Janeiro</p>
+                </h3>
+            </div>
+
+            <div className={styleCard.Competencia}>
+                <h3 className={styleCard.cardResultado_Titulo}>
+                    Competência:
+                    <p className={styleCard.cardResultado_Texto}>2025-01</p>
+                </h3>
+            </div>
+
+            <div className={styleCard.ValorBeneficio}>
+                <h3 className={styleCard.cardResultado_Titulo}>
+                    Valor da Parcela:
+                    <p className={styleCard.cardResultado_Texto}>R$ 500,00</p>
+                </h3>
+            </div>
+        </section>
     );
 }
-
 
 function PesquisaResultado({ tipo }) {
 
@@ -32,6 +96,27 @@ function PesquisaResultado({ tipo }) {
                     </header>
                     <div className={style.cardResultadoArea}>
                         <PrintResultados />
+                        <PrintResultados />
+                        <PrintResultados />
+                        <PrintResultados />
+                        <PrintResultados />
+                        <PrintResultados />
+                        <PrintResultados />
+                        <PrintResultados />
+                        <PrintResultados />
+                        <PrintResultados />
+                        <PrintResultados />
+                        <PrintResultados />
+                        <PrintResultados />
+                        <PrintResultados />
+                        <PrintResultados />
+                        <PrintResultados />
+                        <PrintResultados />
+                        <PrintResultados />
+                        <PrintResultados />
+                        <PrintResultados />
+                        <PrintResultados />
+                        <PrintResultados />
                     </div>
                 </section>
 
@@ -41,9 +126,9 @@ function PesquisaResultado({ tipo }) {
             {
                 tipo === LAYOUT_TYPE.POST_LOGIN && (
                     <section className={style.secaoResultado}>
-                        <div className={style.cardResultado}>
+                        <section className={style.cardResultado}>
 
-                        </div>
+                        </section>
                     </section>
                 )
             }

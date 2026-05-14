@@ -1,22 +1,83 @@
 .cardResultado {
-  width: auto;
-  height: auto;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  margin: 10px;
+  width: 100%;
+
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 14px;
+
+  margin: 0px 12px 20px 0px;
+  padding: 16px;
+
   background: #1e2128;
+
   border: 1px solid #3c2d2d;
   border-radius: 12px;
-  padding: 24px;
+
   color: #fff;
 }
 
-h3 {
-  font-size: 22px;
-  font-weight: 600;
+.cardResultado > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-shadow: 0 4px 10px rgba(0,0,0,.2);
+  min-height: 90px;
+  
+  padding: 10px 14px;
+
+  background: #2a2f3a;
+
+  border-radius: 8px;
+
+  transition: 0.2s ease;
 }
+
+.cardResultado > div:hover {
+  transform: translateY(-2px);
+
+  background: #323848;
+}
+
+.ValorBeneficio {
+  grid-column: span 3;
+
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+
+  min-height: 110px;
+}
+
+.ValorBeneficio > h3 {
+  font-size: 18px;
+}
+
+.ValorBeneficio p {
+  font-size: 28px;
+
+  font-weight: 700;
+
+  margin-top: 8px;
+}
+
+h3 {
+  font-size: 15px;
+
+  font-weight: 600;
+
+  margin: 0;
+
+  color: #d7dce5;
+}
+
 p {
   font-size: 18px;
-  font-weight: 400;
+
+  font-weight: 500;
+
+  margin-top: 6px;
+
+  color: #ffffff;
 }
