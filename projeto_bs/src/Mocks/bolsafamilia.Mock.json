@@ -1,0 +1,28 @@
+{
+  "content": [
+    {
+      "id": 1,
+      "nomeFavorecido": "Maria da Silva",
+      "cpfFavorecido": "000.000.000-00",
+      "nisFavorecido": "123456789",
+      "nomeMunicipio": "Florianópolis",
+      "codigoMunicipioSiafi": "8105",
+      "uf": "SC",
+      "mesReferencia": "Janeiro",
+      "competencia": "2025-01",
+      "valorParcela": 600.00
+    },
+    {
+      "id": 2,
+      "nomeFavorecido": "Carlos Souza",
+      "cpfFavorecido": "222.222.222-22",
+      "nisFavorecido": "999999999",
+      "nomeMunicipio": "Joinville",
+      "codigoMunicipioSiafi": "8101",
+      "uf": "SC",
+      "mesReferencia": "Março",
+      "competencia": "2025-03",
+      "valorParcela": 850.00
+    }
+  ]
+}

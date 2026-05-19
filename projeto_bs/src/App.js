@@ -1,5 +1,7 @@
 import './App.css';
 
+import { useState } from 'react';
+
 import {
   BrowserRouter,
   Routes,
@@ -14,8 +16,10 @@ import PesquisarPage from './components/pages/Pesquisar/Pesquisar.Page.js';
 
 import Navbar from './components/layout/Navbar/Navbar.js';
 import PainelLateral from './components/layout/PainelLateral/PainelLateral.js';
+
 import PesquisaDados from './components/layout/PesquisaDados/PesquisaDados.js';
 import ResultadosPesquisa from './components/layout/ResultadosPesquisa/Resultados_Pesquisa.js';
+
 import Footer from './components/layout/Footer/Footer.js';
 
 import PrivateRoute from './components/layout/PrivateRoute/PrivateRoute.js';
@@ -28,40 +32,70 @@ const LAYOUT_TYPE = {
 
 function App() {
 
+  // =========================
+  // ESTADOS GLOBAIS DA PESQUISA
+  // =========================
+
+  const [resultados, setResultados] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [erro, setErro] = useState(null);
+
   return (
     <BrowserRouter>
 
       <div className="app-layout">
 
-        <content className="content_area">
+        {/* RESULTADOS */}
+
+        <section className="content_area">
+
           <ResultadosPesquisa
             tipo={LAYOUT_TYPE.PRE_LOGIN}
+            resultados={resultados}
+            loading={loading}
+            erro={erro}
           />
-        </content>
+
+        </section>
 
         {/* NAVBAR */}
+
         <header className="navbar-area">
-          <Navbar tipo={LAYOUT_TYPE.POST_LOGIN} />
+
+          <Navbar
+            tipo={LAYOUT_TYPE.POST_LOGIN}
+          />
+
         </header>
-        
-        {/*Painel de filtros*/}
+
+        {/* FILTROS */}
+
         <aside className="rightbar-area">
+
           <PesquisaDados
             tipo={LAYOUT_TYPE.PRE_LOGIN}
+            setResultados={setResultados}
+            setLoading={setLoading}
+            setErro={setErro}
           />
+
         </aside>
 
-        
-        {/* SIDEBAR ESQUERDA */}
+        {/* SIDEBAR */}
+
         <aside className="sidebar-area">
+
           <PainelLateral
             tipo={LAYOUT_TYPE.POST_LOGIN}
             nomeUsuario="Usuário"
           />
+
         </aside>
 
-        {/* CONTEÚDO */}
+        {/* ROTAS */}
+
         <main className="content-area">
+
           <Routes>
 
             <Route
@@ -94,9 +128,11 @@ function App() {
             />
 
           </Routes>
+
         </main>
 
         {/* FOOTER */}
+
         <footer className="footer-area">
           <Footer />
         </footer>
