@@ -64,34 +64,30 @@
 
 .link {
   width: 100%;
-
   display: flex;
   align-items: center;
-
   gap: 10px;
-
   padding: 12px 20px;
-
   color: #abb2bf;
-
-  text-decoration: none;
-
+  text-decoration: none; 
   font-size: 14px;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-
   border-left: 3px solid transparent;
-
   transition: 0.2s ease;
+  background-color: transparent;
 }
 
 .link:hover {
   background: rgba(255, 255, 255, 0.05);
-
   color: #ffffff;
-
   border-left-color: #61dafb;
 }
 
+.linkAtivo{
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  border-left-color: #61dafb;
+}
 /* =============================================
    ÍCONE
 ============================================= */

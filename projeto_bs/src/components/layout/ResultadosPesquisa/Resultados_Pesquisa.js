@@ -112,10 +112,7 @@ function PrintResultados({ pessoa }) {
     );
 }
 
-function ResultadosPesquisa({
-    resultados,
-    loading,
-    erro,
+function ResultadosPesquisa({resultados, loading, erro,
     tipo = LAYOUT_TYPE.PRE_LOGIN
 }) {
 
@@ -129,11 +126,11 @@ function ResultadosPesquisa({
                 <header className={style.headerResultado}>
 
                     <h2 className={style.secaoResultado_Titulo}>
-                        Resultados da Pesquisa
+                        Os resultados da sua pesquisa aparecerão aqui.
                     </h2>
 
                     <p className={style.secaoResultado_Texto}>
-                        Os resultados da pesquisa aparecerão aqui.
+                        na palma da sua mão.
                     </p>
 
                 </header>

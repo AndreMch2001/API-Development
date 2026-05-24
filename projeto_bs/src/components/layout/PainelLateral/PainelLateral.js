@@ -1,21 +1,13 @@
 import style from './PainelLateral.module.css';
 
-import { Link } from 'react-router-dom';
-
 import { LAYOUT_TYPE } from '../../../constants/layoutTypes.js';
 
 const navLinks = [
-  { id: 1, label: 'Dashboard', to: '/dashboard' },
-  { id: 2, label: 'Pesquisas', to: '/pesquisa' },
-  { id: 3, label: 'Relatórios', to: '/relatorios' },
-  { id: 4, label: 'Usuários', to: '/usuarios' },
-  { id: 5, label: 'Configurações', to: '/configuracoes' },
+  { id: 1, label: 'Pesquisar Todos', modo: 'TODOS'},
+  { id: 2, label: 'Pesquisas Com Filtros', modo: 'FILTRO'},
 ];
 
-function PainelLateral({
-  tipo,
-  nomeUsuario = 'Usuário'
-}) {
+function PainelLateral({tipo, nomeUsuario = 'Jonas Tillmann Junior', modoPesquisa, setModoPesquisa}) {
 
   if (tipo !== LAYOUT_TYPE.POST_LOGIN) return null;
 
@@ -35,16 +27,20 @@ function PainelLateral({
               className={style.item}
             >
 
-              <Link
-                className={style.link}
-                to={link.to}
-              >
+              <button
+                type="button"
+                className={`${style.link} ${
+                    modoPesquisa === link.modo ? style.linkAtivo: style.link
+                }`}
+                onClick={() => setModoPesquisa(link.modo)}>
+
                 <span className={style.linkIcone}>
                   &#9632;
                 </span>
 
                 {link.label}
-              </Link>
+
+              </button>
 
             </li>
 

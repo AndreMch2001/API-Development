@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 import style from './PesquisaDados.module.css';
 import { LAYOUT_TYPE } from '../../../constants/layoutTypes.js';
-import mockData from '../../../Mocks/bolsafamilia.Mock.json';
+//import mockData from '../../../Mocks/bolsafamilia.Mock.json';
 
 function InputFiltro({
   label,
@@ -36,7 +36,8 @@ function InputFiltro({
     </div>
   );
 }
-
+/*pesquisar dados com todas as informações*/
+/*Pesquisar dados com Filtro*/
 function PesquisaDados({
   setResultados,
   setLoading,
@@ -56,95 +57,59 @@ function PesquisaDados({
 
     const { name, value } = event.target;
 
-    setFiltros((prev) => ({
-      ...prev,
-      [name]: value
-    }));
+    setFiltros((prev) => ({...prev,[name]: value }));
   }
 
-  
-  {/*async function pesquisar(event) {
-        event.preventDefault();
-
-        try {
-
-            setLoading(true);
-            setErro(null);
-
-            const params = new URLSearchParams();
-
-            params.append('pagina', 0);
-            params.append('tamanho', 20);
-
-            if (filtros.nome.trim()) {
-                params.append('nome', filtros.nome);
-            }
-
-            if (filtros.nisFavorecido.trim()) {
-                params.append('nisFavorecido', filtros.nisFavorecido);
-            }
-
-            if (filtros.nomeMunicipio.trim()) {
-                params.append('nomeMunicipio', filtros.nomeMunicipio);
-            }
-
-            if (filtros.uf.trim()) {
-                params.append('uf', filtros.uf);
-            }
-
-            if (filtros.competencia.trim()) {
-                params.append('competencia', filtros.competencia);
-            }
-
-            const response = await fetch(
-                `http://localhost:8080/api/Bolsafamiliamodel/busca?${params.toString()}`
-            );
-
-            if (!response.ok) {
-                throw new Error('Erro ao buscar dados');
-            }
-
-            const data = await response.json();
-
-            setResultados(data.content);
-
-        } catch (error) {
-
-            console.error(error);
-
-            setErro('Erro ao carregar resultados');
-
-        } finally {
-
-            setLoading(false);
-
-        }
-    }*/}
-async function pesquisar(event) {
-
+  async function pesquisar(event) {
     event.preventDefault();
 
     try {
 
       setLoading(true);
-
       setErro(null);
 
-      // Simula delay da API
+      const params = new URLSearchParams();
 
-      await new Promise(resolve =>
-        setTimeout(resolve, 1000)
+      params.append('pagina', 0);
+      params.append('tamanho', 20);
+
+      if (filtros.nome.trim()) {
+        params.append('nome', filtros.nome);
+      }
+
+      if (filtros.nisFavorecido.trim()) {
+        params.append('nisFavorecido', filtros.nisFavorecido);
+      }
+
+      if (filtros.nomeMunicipio.trim()) {
+        params.append('nomeMunicipio', filtros.nomeMunicipio);
+      }
+
+      if (filtros.uf.trim()) {
+        params.append('uf', filtros.uf);
+      }
+
+      if (filtros.competencia.trim()) {
+        params.append('competencia', filtros.competencia);
+      }
+
+      const response = await fetch(
+        `http://localhost:8080/api/Bolsafamiliamodel/busca?${params.toString()}`
       );
 
-      // JSON mockado
+      if (!response.ok) {
+        throw new Error('Erro ao buscar dados');
+      }
 
-      setResultados(mockData.content);
+      const data = await response.json();
+
+      setResultados(data.content);
 
     } catch (error) {
 
       console.error(error);
 
-      setErro('Erro ao carregar resultados.');
+      setErro('Erro ao carregar resultados');
 
     } finally {
 

@@ -54,12 +54,14 @@ function Navbar({ tipo }) {
                 Usuário
               </Link>
             </li>
-
-            <li className={style.elementoLista}>
+            {/*
+             <li className={style.elementoLista}>
               <Link className={style.linkElemento} to="/dashboard">
                 Dashboard
               </Link>
             </li>
+            */}
+           
             <li className={style.elementoLista}>
               <Link className={style.linkElemento} to="/pesquisa">
                 Pesquisar

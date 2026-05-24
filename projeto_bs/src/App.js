@@ -36,9 +36,11 @@ function App() {
   // ESTADOS GLOBAIS DA PESQUISA
   // =========================
 
+  const [modoPesquisa, setModoPesquisa] = useState('FILTRO');
   const [resultados, setResultados] = useState([]);
   const [loading, setLoading] = useState(false);
   const [erro, setErro] = useState(null);
+  
 
   return (
     <BrowserRouter>
@@ -77,6 +79,7 @@ function App() {
             setResultados={setResultados}
             setLoading={setLoading}
             setErro={setErro}
+            modoPesquisa={modoPesquisa}
           />
 
         </aside>
@@ -88,8 +91,9 @@ function App() {
           <PainelLateral
             tipo={LAYOUT_TYPE.POST_LOGIN}
             nomeUsuario="Usuário"
+            modoPesquisa={modoPesquisa}
+            setModoPesquisa={setModoPesquisa}
           />
-
         </aside>
 
         {/* ROTAS */}
@@ -119,7 +123,7 @@ function App() {
                 <PrivateRoute>
                   <UsuarioPage />
                 </PrivateRoute>
-              }
+              } 
             />
 
             <Route
