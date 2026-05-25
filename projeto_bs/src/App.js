@@ -40,7 +40,7 @@ function App() {
   const [resultados, setResultados] = useState([]);
   const [loading, setLoading] = useState(false);
   const [erro, setErro] = useState(null);
-  
+
 
   return (
     <BrowserRouter>
@@ -75,7 +75,7 @@ function App() {
         <aside className="rightbar-area">
 
           <PesquisaDados
-            tipo={LAYOUT_TYPE.PRE_LOGIN}
+            tipo={LAYOUT_TYPE.POST_LOGIN}
             setResultados={setResultados}
             setLoading={setLoading}
             setErro={setErro}
@@ -84,6 +84,14 @@ function App() {
 
         </aside>
 
+        {/*
+          
+/>
+
+<FormPesquisa
+  modoPesquisa={modoPesquisa}
+/>
+        */}
         {/* SIDEBAR */}
 
         <aside className="sidebar-area">
@@ -94,6 +102,7 @@ function App() {
             modoPesquisa={modoPesquisa}
             setModoPesquisa={setModoPesquisa}
           />
+
         </aside>
 
         {/* ROTAS */}
@@ -123,7 +132,7 @@ function App() {
                 <PrivateRoute>
                   <UsuarioPage />
                 </PrivateRoute>
-              } 
+              }
             />
 
             <Route

@@ -1,8 +1,7 @@
-import { useState } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 
 import style from './PesquisaDados.module.css';
 import { LAYOUT_TYPE } from '../../../constants/layoutTypes.js';
-//import mockData from '../../../Mocks/bolsafamilia.Mock.json';
 
 function InputFiltro({
   label,
@@ -36,13 +35,13 @@ function InputFiltro({
     </div>
   );
 }
-/*pesquisar dados com todas as informações*/
-/*Pesquisar dados com Filtro*/
+
 function PesquisaDados({
   setResultados,
   setLoading,
   setErro,
-  tipo = LAYOUT_TYPE.PRE_LOGIN
+  tipo = LAYOUT_TYPE.POST_LOGIN,
+  modoPesquisa
 }) {
 
   const [filtros, setFiltros] = useState({
@@ -53,14 +52,67 @@ function PesquisaDados({
     competencia: ''
   });
 
+  // =========================
+  // ATUALIZAR FILTROS
+  // =========================
+
   function atualizarFiltro(event) {
 
     const { name, value } = event.target;
 
-    setFiltros((prev) => ({...prev,[name]: value }));
+    setFiltros((prev) => ({
+      ...prev,
+      [name]: value
+    }));
   }
 
+  // =========================
+  // BUSCAR TODOS
+  // =========================
+
+const buscarTodos = useCallback(async () => {
+
+  try {
+
+    setLoading(true);
+    setErro(null);
+
+    const params = new URLSearchParams();
+
+    params.append('pagina', 0);
+    params.append('tamanho', 20);
+
+    const response = await fetch(
+      `http://localhost:8080/api/Bolsafamiliamodel/todos?${params.toString()}`
+    );
+
+    if (!response.ok) {
+      throw new Error('Erro ao buscar todos os dados');
+    }
+
+    const data = await response.json();
+
+    setResultados(data.content);
+
+  } catch (error) {
+
+    console.error(error);
+    setErro(error.message);
+
+  } finally {
+
+    setLoading(false);
+
+  }
+
+}, [setErro, setLoading, setResultados]);
+
+  // =========================
+  // PESQUISA COM FILTROS
+  // =========================
+
   async function pesquisar(event) {
+
     event.preventDefault();
 
     try {
@@ -108,8 +160,7 @@ function PesquisaDados({
     } catch (error) {
 
       console.error(error);
-
-      setErro('Erro ao carregar resultados');
+      setErro(error.message);
 
     } finally {
 
@@ -118,11 +169,24 @@ function PesquisaDados({
     }
   }
 
+  // =========================
+  // AUTO PESQUISA
+  // =========================
+
+  useEffect(() => {
+
+  if (modoPesquisa === 'TODOS') {
+    buscarTodos();
+  }
+
+}, [modoPesquisa, buscarTodos]);
+
   if (tipo === LAYOUT_TYPE.NONE) return null;
 
   return (
     <>
-      {tipo === LAYOUT_TYPE.PRE_LOGIN && (
+
+      {tipo === LAYOUT_TYPE.POST_LOGIN && (
 
         <section className={style.secaoFiltro}>
 
@@ -189,19 +253,22 @@ function PesquisaDados({
               placeholder="2025-01"
             />
 
-            <button
-              type="submit"
-              className={style.button}
-              aria-label="Pesquisar"
-            >
-              ➤
-            </button>
+            {modoPesquisa === 'FILTRO' && (
+              <button
+                type="submit"
+                className={style.button}
+                aria-label="Pesquisar"
+              >
+                ➤
+              </button>
+            )}
 
           </form>
 
         </section>
 
       )}
+
     </>
   );
 }

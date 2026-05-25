@@ -27,13 +27,7 @@ function PainelLateral({tipo, nomeUsuario = 'Jonas Tillmann Junior', modoPesquis
               className={style.item}
             >
 
-              <button
-                type="button"
-                className={`${style.link} ${
-                    modoPesquisa === link.modo ? style.linkAtivo: style.link
-                }`}
-                onClick={() => setModoPesquisa(link.modo)}>
-
+              <button type="button" className={`${style.link} ${modoPesquisa === link.modo ? style.linkAtivo: style.link}`} onClick={() => setModoPesquisa(link.modo)}>
                 <span className={style.linkIcone}>
                   &#9632;
                 </span>
