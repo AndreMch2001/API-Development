@@ -108,6 +108,32 @@
   border-radius: 20px;
 }
 
+.loadingTexto{
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: transparent;
+  font-size: 80px;
+  font-weight: 400;
+  color: var(--color-text);
+  margin: 0;
+  animation: girar 1s linear infinite;
+}
+
+@keyframes girar {
+
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+
+}
+
 /* Responsividade */
 @media (max-width: 900px) {
   .secaoResultado {

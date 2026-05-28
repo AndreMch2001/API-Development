@@ -112,7 +112,7 @@ function PrintResultados({ pessoa }) {
     );
 }
 
-function ResultadosPesquisa({resultados, loading, erro,
+function ResultadosPesquisa({ resultados, loading, erro,
     tipo = LAYOUT_TYPE.PRE_LOGIN
 }) {
 
@@ -136,7 +136,14 @@ function ResultadosPesquisa({resultados, loading, erro,
                 </header>
 
                 {loading && (
-                    <p>Carregando resultados...</p>
+                    <div>
+                        <p className={style.loadingTexto}>
+                          ↻
+                        </p>
+                        <p className={style.secaoResultado_Texto}>
+                            Carregando resultados...
+                        </p>
+                    </div>  
                 )}
 
                 {erro && (

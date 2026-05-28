@@ -70,48 +70,48 @@ function PesquisaDados({
   // BUSCAR TODOS
   // =========================
 
-const buscarTodos = useCallback(async () => {
+  const buscarTodos = useCallback(async () => {
 
-  try {
+    try {
 
-    setLoading(true);
-    setErro(null);
+      setLoading(true);
+      setErro(null);
 
-    const params = new URLSearchParams();
+      const params = new URLSearchParams();
 
-    params.append('pagina', 0);
-    params.append('tamanho', 20);
+      params.append('pagina', 0);
+      params.append('tamanho', 20);
 
-    const response = await fetch(
-      `http://localhost:8080/api/Bolsafamiliamodel/todos?${params.toString()}`
-    );
+      const response = await fetch(
+        `http://localhost:8080/api/Bolsafamiliamodel/todos?${params.toString()}`
+      );
 
-    if (!response.ok) {
-      throw new Error('Erro ao buscar todos os dados');
+      if (!response.ok) {
+        throw new Error('Erro ao buscar todos os dados');
+      }
+
+      const data = await response.json();
+
+      setResultados(data.content);
+
+    } catch (error) {
+
+      console.error(error);
+      setErro(error.message);
+
+    } finally {
+
+      setLoading(false);
+
     }
 
-    const data = await response.json();
-
-    setResultados(data.content);
-
-  } catch (error) {
-
-    console.error(error);
-    setErro(error.message);
-
-  } finally {
-
-    setLoading(false);
-
-  }
-
-}, [setErro, setLoading, setResultados]);
+  }, [setErro, setLoading, setResultados]);
 
   // =========================
   // PESQUISA COM FILTROS
   // =========================
 
-  async function pesquisar(event) {
+  async function buscarFiltro(event) {
 
     event.preventDefault();
 
@@ -175,11 +175,9 @@ const buscarTodos = useCallback(async () => {
 
   useEffect(() => {
 
-  if (modoPesquisa === 'TODOS') {
     buscarTodos();
-  }
 
-}, [modoPesquisa, buscarTodos]);
+  }, [buscarTodos]);
 
   if (tipo === LAYOUT_TYPE.NONE) return null;
 
@@ -200,7 +198,7 @@ const buscarTodos = useCallback(async () => {
 
           <form
             className={style.secaoFiltro_Lista}
-            onSubmit={pesquisar}
+            onSubmit={buscarFiltro}
           >
 
             <InputFiltro
