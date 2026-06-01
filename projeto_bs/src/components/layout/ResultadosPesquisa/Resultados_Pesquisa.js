@@ -7,7 +7,8 @@ function PrintResultados({ pessoa }) {
 
     return (
         <section className={styleCard.cardResultado}>
-
+            {
+            /*
             <div className={styleCard.ID}>
                 <h3 className={styleCard.cardResultado_Titulo}>
                     ID:
@@ -17,6 +18,8 @@ function PrintResultados({ pessoa }) {
                     {pessoa.id}
                 </p>
             </div>
+            */}
+            
 
             <div className={styleCard.Nome}>
                 <h3 className={styleCard.cardResultado_Titulo}>
@@ -27,7 +30,7 @@ function PrintResultados({ pessoa }) {
                     {pessoa.nomeFavorecido}
                 </p>
             </div>
-
+            {/*
             <div className={styleCard.CPF}>
                 <h3 className={styleCard.cardResultado_Titulo}>
                     CPF do Favorecido:
@@ -37,6 +40,8 @@ function PrintResultados({ pessoa }) {
                     {pessoa.cpfFavorecido}
                 </p>
             </div>
+            */}
+            
 
             <div className={styleCard.NIS}>
                 <h3 className={styleCard.cardResultado_Titulo}>
@@ -57,7 +62,7 @@ function PrintResultados({ pessoa }) {
                     {pessoa.nomeMunicipio}
                 </p>
             </div>
-
+            {/*
             <div className={styleCard.CodigoMunicipio}>
                 <h3 className={styleCard.cardResultado_Titulo}>
                     Código Município SIAFI:
@@ -67,7 +72,7 @@ function PrintResultados({ pessoa }) {
                     {pessoa.codigoMunicipioSiafi}
                 </p>
             </div>
-
+            */}
             <div className={styleCard.UF}>
                 <h3 className={styleCard.cardResultado_Titulo}>
                     UF:
@@ -145,13 +150,15 @@ function ResultadosPesquisa({ resultados, loading, erro,
                         </p>
                     </div>  
                 )}
-
+                {/*
+                Imprimi o erro na tela mas não acho mto util se precisar tá ai
                 {erro && (
                     <p>{erro}</p>
                 )}
-
+                */}
+                
                 {!loading && resultados.length === 0 && (
-                    <p>Nenhum resultado encontrado.</p>
+                    <p className={style.secaoResultado_Texto} >Nenhum resultado encontrado.</p>
                 )}
 
                 <div className={style.cardResultadoArea}>
