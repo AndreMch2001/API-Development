@@ -10,4 +10,5 @@ public class BolsafamiliaApplication {
 		SpringApplication.run(BolsafamiliaApplication.class, args);
 	}
 
+	
 }

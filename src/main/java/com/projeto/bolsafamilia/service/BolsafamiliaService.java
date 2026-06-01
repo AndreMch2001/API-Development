@@ -10,24 +10,36 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
+import com.projeto.bolsafamilia.dto.Bolsafamiliadto;
 import com.projeto.bolsafamilia.model.Bolsafamiliamodel;
 import com.projeto.bolsafamilia.repository.BolsafamiliaRepository;
 
 import jakarta.persistence.criteria.Predicate;
-
 @Service
 public class BolsafamiliaService {
+    
     @Autowired
     private BolsafamiliaRepository repository;
 
-    public Page<Bolsafamiliamodel> listarTodos(
-        int pagina,
-        int tamanho) {
-            
-        return repository.findAll(PageRequest.of(pagina, tamanho));
+    private Bolsafamiliadto converter(Bolsafamiliamodel model) {
+
+    return new Bolsafamiliadto(
+        model.getCompetencia(),
+        model.getMesReferencia(),
+        model.getUf(),
+        model.getNomeMunicipio(),
+        model.getNomeFavorecido(),
+        model.getValorParcela(),
+        model.getNisFavorecido()
+    );
+}
+    public Page<Bolsafamiliadto> listarTodos(int pagina,int tamanho) {
+        return repository
+            .findAll(PageRequest.of(pagina, tamanho))
+            .map(this::converter);
     }
-    
-   public Page<Bolsafamiliamodel> Busca(
+
+    public Page<Bolsafamiliadto> Busca(
         Long id,
         String nome,
         String uf,
@@ -102,9 +114,9 @@ public class BolsafamiliaService {
                     valorMaximo));
         }
 
-        return cb.and(predicates.toArray(new Predicate[0]));
+        return cb.and(predicates.toArray(Predicate[]::new));
     };
 
-    return repository.findAll(spec, PageRequest.of(pagina, tamanho));
+    return repository.findAll(spec,PageRequest.of(pagina, tamanho)).map(this::converter);
 }
 }
