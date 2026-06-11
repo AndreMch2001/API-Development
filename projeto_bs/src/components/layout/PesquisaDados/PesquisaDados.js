@@ -3,17 +3,7 @@ import { useState, useEffect, useCallback } from 'react';
 import style from './PesquisaDados.module.css';
 import { LAYOUT_TYPE } from '../../../constants/layoutTypes.js';
 
-function InputFiltro({
-  label,
-  id,
-  type = "text",
-  name,
-  className,
-  placeholder,
-  value,
-  onChange
-}) {
-
+function InputFiltro({ label, id, type = "text", name, className, placeholder, value, onChange }) {
   return (
     <div className={style.div_InputFiltro}>
 
@@ -21,43 +11,22 @@ function InputFiltro({
         {label}
       </label>
 
-      <input
-        type={type}
-        id={id}
-        name={name}
-        value={value}
-        onChange={onChange}
-        className={className}
-        placeholder={placeholder}
-        aria-label={label}
-      />
+      <input type={type} id={id} name={name} value={value} onChange={onChange} className={className} placeholder={placeholder} aria-label={label} />
 
     </div>
   );
 }
 
-function PesquisaDados({
-  setResultados,
-  setLoading,
-  setErro,
-  tipo = LAYOUT_TYPE.POST_LOGIN,
-  modoPesquisa
-}) {
+function PesquisaDados({ setResultados, setLoading, setErro, tipo = LAYOUT_TYPE.POST_LOGIN, modoPesquisa }) {
 
-  const [filtros, setFiltros] = useState({
-    nome: '',
-    nisFavorecido: '',
-    nomeMunicipio: '',
-    uf: '',
-    competencia: ''
-  });
-
+  const [filtros, setFiltros] = useState({ nome: '', nisFavorecido: '', nomeMunicipio: '', uf: '', competencia: '' });
+  const [pagina, setPagina] = useState(0);
+  const [totalPaginas, setTotalPaginas] = useState(0);
   // =========================
   // ATUALIZAR FILTROS
   // =========================
 
   function atualizarFiltro(event) {
-
     const { name, value } = event.target;
 
     setFiltros((prev) => ({
@@ -70,7 +39,7 @@ function PesquisaDados({
   // BUSCAR TODOS
   // =========================
 
-  const buscarTodos = useCallback(async () => {
+  const buscarTodos = useCallback(async (paginaAtual = 0) => {
 
     try {
 
@@ -79,7 +48,7 @@ function PesquisaDados({
 
       const params = new URLSearchParams();
 
-      params.append('pagina', 0);
+      params.append('pagina', paginaAtual);
       params.append('tamanho', 20);
 
       const response = await fetch(
@@ -91,6 +60,9 @@ function PesquisaDados({
       }
 
       const data = await response.json();
+
+      setPagina(data.number);
+      setTotalPaginas(data.totalPages);
 
       setResultados(data.content);
 
@@ -108,12 +80,29 @@ function PesquisaDados({
   }, [setErro, setLoading, setResultados]);
 
   // =========================
+  // Mudar de pagina
+  // =========================
+  async function mudarPagina(novaPagina) {
+
+    if (novaPagina < 0 || novaPagina >= totalPaginas) {
+      return;
+    }
+
+    if (modoPesquisa === 'TODOS') {
+      await buscarTodos(novaPagina);
+    } else {
+      await buscarFiltro(null, novaPagina);
+    }
+  }
+  // =========================
   // PESQUISA COM FILTROS
   // =========================
 
-  async function buscarFiltro(event) {
+  async function buscarFiltro(event = null, paginaAtual = 0) {
 
-    event.preventDefault();
+    if (event) {
+      event.preventDefault();
+    }
 
     try {
 
@@ -122,7 +111,7 @@ function PesquisaDados({
 
       const params = new URLSearchParams();
 
-      params.append('pagina', 0);
+      params.append('pagina', paginaAtual);
       params.append('tamanho', 20);
 
       if (filtros.nome.trim()) {
@@ -155,6 +144,9 @@ function PesquisaDados({
 
       const data = await response.json();
 
+      setPagina(data.number);
+      setTotalPaginas(data.totalPages);
+
       setResultados(data.content);
 
     } catch (error) {
@@ -169,18 +161,29 @@ function PesquisaDados({
     }
   }
 
-  // =========================
-  // AUTO PESQUISA
-  // =========================
-
-  useEffect(() => {
-
-    buscarTodos();
-
-  }, [buscarTodos]);
-
   if (tipo === LAYOUT_TYPE.NONE) return null;
 
+  if (modoPesquisa === 'TODOS') {
+    return (
+      //<center>
+      <section className={style.secaoFiltro}>
+        <h2 className={style.secaoFiltro_Titulo}>
+          Você está Pesquisando Todos os Resultados
+        </h2>
+        <br></br>
+        <p className={style.secaoFiltro_Texto}>
+          nessa pesuisa Encontrara todos os dados que temos disponiveis em nossa posse
+        </p>
+        <p className={style.secaoFiltro_Texto}>
+          podendo usar o navegador de paginas para ir e voltar na sua pesquisa
+        </p>
+        <p className={style.secaoFiltro_Texto}>
+          caso queira voltar para os filtros aperte no botão "Pesquisar com Filtros para retornar ao filtro"
+        </p>
+      </section>
+      //</center>
+    );
+  }
   return (
     <>
 
@@ -196,11 +199,7 @@ function PesquisaDados({
             Use os filtros para refinar sua busca.
           </p>
 
-          <form
-            className={style.secaoFiltro_Lista}
-            onSubmit={buscarFiltro}
-          >
-
+          <form className={style.secaoFiltro_Lista} onSubmit={(e) => buscarFiltro(e, 0)}>
             <InputFiltro
               label="Filtrar pelo Nome"
               id="filtroNome"
@@ -262,7 +261,35 @@ function PesquisaDados({
             )}
 
           </form>
+          {totalPaginas > 0 && (
 
+            <div className={style.paginacao}>
+
+              <button
+                type="button"
+                className={style.botaoPagina}
+                onClick={() => mudarPagina(pagina - 1)}
+                disabled={pagina === 0}
+              >
+                ←
+              </button>
+
+              <span className={style.infoPagina}>
+                Página {pagina + 1} de {totalPaginas}
+              </span>
+
+              <button
+                type="button"
+                className={style.botaoPagina}
+                onClick={() => mudarPagina(pagina + 1)}
+                disabled={pagina >= totalPaginas - 1}
+              >
+                →
+              </button>
+
+            </div>
+
+          )}
         </section>
 
       )}

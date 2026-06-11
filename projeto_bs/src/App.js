@@ -24,22 +24,21 @@ import Footer from './components/layout/Footer/Footer.js';
 
 import PrivateRoute from './components/layout/PrivateRoute/PrivateRoute.js';
 
-const LAYOUT_TYPE = {
-  NONE: 0,
-  PRE_LOGIN: 1,
-  POST_LOGIN: 2,
-};
+const LAYOUT_TYPE = { NONE: 0, PRE_LOGIN: 1, POST_LOGIN: 2, };
 
 function App() {
 
   // =========================
   // ESTADOS GLOBAIS DA PESQUISA
   // =========================
-
-  const [modoPesquisa, setModoPesquisa] = useState('FILTRO');
+  const [rightbarAberta, setRightbarAberta] = useState(true);
+  const [modoPesquisa, setModoPesquisa] = useState('TODOS');
   const [resultados, setResultados] = useState([]);
   const [loading, setLoading] = useState(false);
   const [erro, setErro] = useState(null);
+  const [pagina, setPagina] = useState(0);
+  const [dados, setDados] = useState(null);
+
 
 
   return (
@@ -52,11 +51,10 @@ function App() {
         <section className="content_area">
 
           <ResultadosPesquisa
-            tipo={LAYOUT_TYPE.PRE_LOGIN}
-            resultados={resultados}
-            loading={loading}
-            erro={erro}
-          />
+    resultados={resultados}
+    loading={loading}
+    erro={erro}
+/>
 
         </section>
 
@@ -72,8 +70,10 @@ function App() {
 
         {/* FILTROS */}
 
-        <aside className="rightbar-area">
-
+        <aside
+          className={`rightbar-area ${rightbarAberta ? '' : 'rightbar-fechada'
+            }`}
+        >
           <PesquisaDados
             tipo={LAYOUT_TYPE.POST_LOGIN}
             setResultados={setResultados}
@@ -81,17 +81,12 @@ function App() {
             setErro={setErro}
             modoPesquisa={modoPesquisa}
           />
-
         </aside>
 
-        {/*
-          
-/>
+        <button className={`toggle-rightbar ${rightbarAberta ? '' : 'toggle-fechada'}`} onClick={() => setRightbarAberta(!rightbarAberta)}>
+          {rightbarAberta ? '▶' : '◀'}
+        </button>
 
-<FormPesquisa
-  modoPesquisa={modoPesquisa}
-/>
-        */}
         {/* SIDEBAR */}
 
         <aside className="sidebar-area">
