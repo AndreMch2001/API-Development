@@ -37,6 +37,7 @@ function App() {
   const [loading, setLoading] = useState(false);
   const [erro, setErro] = useState(null);
   const [pagina, setPagina] = useState(0);
+  const [totalPaginas, setTotalPaginas] = useState(0);
   const [dados, setDados] = useState(null);
 
 
@@ -54,6 +55,9 @@ function App() {
     resultados={resultados}
     loading={loading}
     erro={erro}
+    paginaAtual={pagina}
+    totalPaginas={totalPaginas}
+    onPaginaChange={setPagina}
 />
 
         </section>
@@ -80,6 +84,10 @@ function App() {
             setLoading={setLoading}
             setErro={setErro}
             modoPesquisa={modoPesquisa}
+            pagina={pagina}
+            setPagina={setPagina}
+            totalPaginas={totalPaginas}
+            setTotalPaginas={setTotalPaginas}
           />
         </aside>
 

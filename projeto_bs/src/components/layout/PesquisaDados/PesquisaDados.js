@@ -180,6 +180,35 @@ function PesquisaDados({ setResultados, setLoading, setErro, tipo = LAYOUT_TYPE.
         <p className={style.secaoFiltro_Texto}>
           caso queira voltar para os filtros aperte no botão "Pesquisar com Filtros para retornar ao filtro"
         </p>
+        {totalPaginas > 0 && (
+
+          <div className={style.paginacao}>
+
+            <button
+              type="button"
+              className={style.botaoPagina}
+              onClick={() => mudarPagina(pagina - 1)}
+              disabled={pagina === 0}
+            >
+              ←
+            </button>
+
+            <span className={style.infoPagina}>
+              Página {pagina + 1} de {totalPaginas}
+            </span>
+
+            <button
+              type="button"
+              className={style.botaoPagina}
+              onClick={() => mudarPagina(pagina + 1)}
+              disabled={pagina >= totalPaginas - 1}
+            >
+              →
+            </button>
+
+          </div>
+
+        )}
       </section>
       //</center>
     );

@@ -93,6 +93,14 @@ function ResultadosPesquisa({
 
     if (tipo === LAYOUT_TYPE.NONE) return null;
 
+    const primeiraPagina = () => {
+        onPaginaChange(0);
+    };
+
+    const ultimaPagina = () => {
+        onPaginaChange(totalPaginas - 1);
+    };
+
     const paginaAnterior = () => {
         if (paginaAtual > 0) {
             onPaginaChange(paginaAtual - 1);
@@ -100,9 +108,12 @@ function ResultadosPesquisa({
     };
 
     const proximaPagina = () => {
-        if (paginaAtual < totalPaginas - 1) {
-            onPaginaChange(paginaAtual + 1);
+        if (paginaAtual >= totalPaginas - 1) {
+            onPaginaChange(0);
+            return;
         }
+
+        onPaginaChange(paginaAtual + 1);
     };
 
     return (
@@ -155,25 +166,35 @@ function ResultadosPesquisa({
                     <div className={style.paginacao}>
 
                         <button
-                            type="button"
                             className={style.botaoPagina}
-                            onClick={paginaAnterior}
-                            disabled={paginaAtual === 0}
+                            onClick={primeiraPagina}
                         >
-                            ←
+                            {"<<"}
                         </button>
 
-                        <span className={style.infoPagina}>
-                            Página {paginaAtual + 1} de {totalPaginas}
+                        <button
+                            className={style.botaoPagina}
+                            onClick={paginaAnterior}
+                        >
+                            {"<"}
+                        </button>
+
+                        <span className={style.numeroPagina}>
+                            {paginaAtual + 1}
                         </span>
 
                         <button
-                            type="button"
                             className={style.botaoPagina}
                             onClick={proximaPagina}
-                            disabled={paginaAtual >= totalPaginas - 1}
                         >
-                            →
+                            {">"}
+                        </button>
+
+                        <button
+                            className={style.botaoPagina}
+                            onClick={ultimaPagina}
+                        >
+                            {">>"}
                         </button>
 
                     </div>
