@@ -83,7 +83,7 @@ function PesquisaDados({
       params.append('tamanho', 20);
 
       const response = await fetch(
-        `http://localhost:8080/api/Bolsafamiliamodel/todos?${params.toString()}`
+        `http://localhost:8081/api/Bolsafamiliamodel/todos?${params.toString()}`
       );
 
       if (!response.ok) {
@@ -146,7 +146,7 @@ function PesquisaDados({
       }
 
       const response = await fetch(
-        `http://localhost:8080/api/Bolsafamiliamodel/busca?${params.toString()}`
+        `http://localhost:8081/api/Bolsafamiliamodel/busca?${params.toString()}`
       );
 
       if (!response.ok) {
