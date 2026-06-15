@@ -4,22 +4,8 @@ import styleCard from './cardResultado.module.css';
 import { LAYOUT_TYPE } from '../../../constants/layoutTypes.js';
 
 function PrintResultados({ pessoa }) {
-
     return (
         <section className={styleCard.cardResultado}>
-            {
-            /*
-            <div className={styleCard.ID}>
-                <h3 className={styleCard.cardResultado_Titulo}>
-                    ID:
-                </h3>
-
-                <p className={styleCard.cardResultado_Texto}>
-                    {pessoa.id}
-                </p>
-            </div>
-            */}
-            
 
             <div className={styleCard.Nome}>
                 <h3 className={styleCard.cardResultado_Titulo}>
@@ -30,18 +16,6 @@ function PrintResultados({ pessoa }) {
                     {pessoa.nomeFavorecido}
                 </p>
             </div>
-            {/*
-            <div className={styleCard.CPF}>
-                <h3 className={styleCard.cardResultado_Titulo}>
-                    CPF do Favorecido:
-                </h3>
-
-                <p className={styleCard.cardResultado_Texto}>
-                    {pessoa.cpfFavorecido}
-                </p>
-            </div>
-            */}
-            
 
             <div className={styleCard.NIS}>
                 <h3 className={styleCard.cardResultado_Titulo}>
@@ -62,17 +36,7 @@ function PrintResultados({ pessoa }) {
                     {pessoa.nomeMunicipio}
                 </p>
             </div>
-            {/*
-            <div className={styleCard.CodigoMunicipio}>
-                <h3 className={styleCard.cardResultado_Titulo}>
-                    Código Município SIAFI:
-                </h3>
 
-                <p className={styleCard.cardResultado_Texto}>
-                    {pessoa.codigoMunicipioSiafi}
-                </p>
-            </div>
-            */}
             <div className={styleCard.UF}>
                 <h3 className={styleCard.cardResultado_Titulo}>
                     UF:
@@ -117,11 +81,40 @@ function PrintResultados({ pessoa }) {
     );
 }
 
-function ResultadosPesquisa({ resultados, loading, erro,
+function ResultadosPesquisa({
+    resultados,
+    loading,
+    erro,
+    paginaAtual = 0,
+    totalPaginas = 0,
+    onPaginaChange,
     tipo = LAYOUT_TYPE.PRE_LOGIN
 }) {
 
     if (tipo === LAYOUT_TYPE.NONE) return null;
+
+    const primeiraPagina = () => {
+        onPaginaChange(0);
+    };
+
+    const ultimaPagina = () => {
+        onPaginaChange(totalPaginas - 1);
+    };
+
+    const paginaAnterior = () => {
+        if (paginaAtual > 0) {
+            onPaginaChange(paginaAtual - 1);
+        }
+    };
+
+    const proximaPagina = () => {
+        if (paginaAtual >= totalPaginas - 1) {
+            onPaginaChange(0);
+            return;
+        }
+
+        onPaginaChange(paginaAtual + 1);
+    };
 
     return (
         <section className={style.content_area}>
@@ -143,34 +136,69 @@ function ResultadosPesquisa({ resultados, loading, erro,
                 {loading && (
                     <div>
                         <p className={style.loadingTexto}>
-                          ↻
+                            ↻
                         </p>
+
                         <p className={style.secaoResultado_Texto}>
                             Carregando resultados...
                         </p>
-                    </div>  
+                    </div>
                 )}
-                {/*
-                Imprimi o erro na tela mas não acho mto util se precisar tá ai
-                {erro && (
-                    <p>{erro}</p>
-                )}
-                */}
-                
+
                 {!loading && resultados.length === 0 && (
-                    <p className={style.secaoResultado_Texto} >Nenhum resultado encontrado.</p>
+                    <p className={style.secaoResultado_Texto}>
+                        Nenhum resultado encontrado.
+                    </p>
                 )}
 
                 <div className={style.cardResultadoArea}>
 
-                    {resultados.map((pessoa) => (
+                    {resultados.map((pessoa, index) => (
                         <PrintResultados
-                            key={pessoa.id}
+                            key={`${pessoa.nisFavorecido}-${index}`}
                             pessoa={pessoa}
                         />
                     ))}
 
                 </div>
+
+                {!loading && totalPaginas > 0 && (
+                    <div className={style.paginacao}>
+
+                        <button
+                            className={style.botaoPagina}
+                            onClick={primeiraPagina}
+                        >
+                            {"<<"}
+                        </button>
+
+                        <button
+                            className={style.botaoPagina}
+                            onClick={paginaAnterior}
+                        >
+                            {"<"}
+                        </button>
+
+                        <span className={style.numeroPagina}>
+                            {paginaAtual + 1}
+                        </span>
+
+                        <button
+                            className={style.botaoPagina}
+                            onClick={proximaPagina}
+                        >
+                            {">"}
+                        </button>
+
+                        <button
+                            className={style.botaoPagina}
+                            onClick={ultimaPagina}
+                        >
+                            {">>"}
+                        </button>
+
+                    </div>
+                )}
 
             </section>
 

@@ -7,7 +7,7 @@
   display: flex;
   flex-direction: column;
   padding: 0;
-  background: transparent;
+  background: #1e2128;
   border: none;
   border-radius: 0;
   box-shadow: none;
@@ -16,12 +16,15 @@
 .secaoFiltro_Titulo {
   font-size: 32px;
   font-weight: 700;
-  margin-bottom: 16px;
+  margin-left: 20px;
   color: #fff;
+
 }
 
 .secaoFiltro_Texto {
-  font-size: 15px;
+  margin-left: 20px;
+  margin-top: 15px;
+  font-size: 20px;
   line-height: 1.5;
   color: #b7bcc7;
   margin-bottom: 32px;
@@ -39,11 +42,18 @@
   flex-direction: column;
   gap: 8px;
   width: 100%;
-   color: #ffffff;
+  
+  margin-left: 10px;
+  font-size: 20px;
 }
-
+label{
+font-size: 20px;
+color: #ffffff;
+margin-left: 10px;
+}
 .secaoFiltro_Input {
-  width: 100%;
+  
+  width: 95%;
   height: 46px;
   padding: 0 14px;
   border: 1px solid #2d323c;
@@ -63,4 +73,45 @@
   font-weight: 700;
   cursor: pointer;
   margin-top: 12px;
+}
+.paginacao {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  gap: 15px;
+
+  margin-top: 20px;
+}
+
+.botaoPagina {
+  width: 40px;
+  height: 40px;
+
+  border: none;
+  border-radius: 8px;
+
+  cursor: pointer;
+
+  background: #3a4254;
+  color: white;
+
+  font-size: 20px;
+  font-weight: bold;
+
+  transition: 0.2s;
+}
+
+.botaoPagina:hover:not(:disabled) {
+  transform: scale(1.05);
+}
+
+.botaoPagina:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.infoPagina {
+  font-size: 16px;
+  font-weight: 600;
 }
