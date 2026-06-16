@@ -1,16 +1,23 @@
-*{
-   color: #ffffff;
+* {
+  color: #ffffff;
+  box-sizing: border-box;
 }
+
 .secaoFiltro {
   width: 100%;
-  height: 100%;
+  height: 100vh;
+
   display: flex;
   flex-direction: column;
+
   padding: 0;
   background: #1e2128;
   border: none;
   border-radius: 0;
   box-shadow: none;
+
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .secaoFiltro_Titulo {
@@ -18,7 +25,6 @@
   font-weight: 700;
   margin-left: 20px;
   color: #fff;
-
 }
 
 .secaoFiltro_Texto {
@@ -42,22 +48,26 @@
   flex-direction: column;
   gap: 8px;
   width: 100%;
-  
+
   margin-left: 10px;
   font-size: 20px;
 }
-label{
-font-size: 20px;
-color: #ffffff;
-margin-left: 10px;
+
+label {
+  font-size: 20px;
+  color: #ffffff;
+  margin-left: 10px;
 }
+
 .secaoFiltro_Input {
-  
   width: 95%;
   height: 46px;
+
   padding: 0 14px;
+
   border: 1px solid #2d323c;
   border-radius: 10px;
+
   background: #0f1115;
   color: #ffffff;
 }
@@ -65,23 +75,29 @@ margin-left: 10px;
 .button {
   width: 100%;
   height: 48px;
+
   border: none;
   border-radius: 10px;
+
   background: #59d4ff;
   color: #000;
+
   font-size: 18px;
   font-weight: 700;
+
   cursor: pointer;
+
   margin-top: 12px;
 }
+
 .paginacao {
   display: flex;
   justify-content: center;
   align-items: center;
 
   gap: 15px;
-
   margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .botaoPagina {
@@ -114,4 +130,46 @@ margin-left: 10px;
 .infoPagina {
   font-size: 16px;
   font-weight: 600;
+}
+
+/* Scroll personalizado */
+.secaoFiltro::-webkit-scrollbar {
+  width: 8px;
+}
+
+.secaoFiltro::-webkit-scrollbar-track {
+  background: #1e2128;
+}
+
+.secaoFiltro::-webkit-scrollbar-thumb {
+  background: #3a4254;
+  border-radius: 10px;
+}
+
+.secaoFiltro::-webkit-scrollbar-thumb:hover {
+  background: #59d4ff;
+}
+
+/* Notebooks com pouca altura */
+@media (max-height: 800px) {
+  .secaoFiltro_Titulo {
+    font-size: 28px;
+  }
+
+  .secaoFiltro_Texto {
+    font-size: 18px;
+  }
+
+  label {
+    font-size: 18px;
+  }
+}
+
+@media screen and (max-height: 850px) {
+  .secaoFiltro {
+    height: 100vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-bottom: 150px;
+  }
 }

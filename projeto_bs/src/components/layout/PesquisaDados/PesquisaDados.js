@@ -113,7 +113,6 @@ function PesquisaDados({ setResultados, setLoading, setErro, tipo = LAYOUT_TYPE.
 
       params.append('pagina', paginaAtual);
       params.append('tamanho', 20);
-
       if (filtros.nome.trim()) {
         params.append('nome', filtros.nome);
       }
